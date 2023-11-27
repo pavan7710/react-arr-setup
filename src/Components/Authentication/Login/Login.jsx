@@ -1,15 +1,11 @@
-import * as React from 'react';
+import React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import { Paper } from '@mui/material'
-
-
+import { ReuseOutlinedInput as OutlinedInput } from '../../ReuseComponents/ReuseOutlinedInput'
+import { Link } from 'react-router-dom';
 export default function SignIn() {
   return (
       <Container sx={{
@@ -23,66 +19,46 @@ export default function SignIn() {
             <OutlinedInput
               type = 'text'
               placeholder='Email ID'
-              sx={{
-                "&.MuiInputBase-root" : {
-                  borderRadius : '40px',
-                  backgroundColor : '#F3F3F3',
-                  marginBottom : '3rem',
-                  color: 'black',
-                  fontSize : '15px',
-                  fontStyle : 'normal',
-                  fontWeight : '400'
-                }, 
-                ".MuiInputBase-input" : {
-                  padding : '1.5rem 2rem',
-                },
-                "& input::placeholder": {
-                  color: "#A1A1A1"
-                },
-              }}
               fullWidth={true}
-              id="outlined-adornment-weight"
-              aria-describedby="outlined-weight-helper-text"
-              inputProps={{
-                'aria-label': 'weight',
-              }}
+              id="email"
+              aria-describedby="outlined-email"
             />
             <OutlinedInput
               type='password'
-                sx={{
-                  "&.MuiInputBase-root" : {
-                    borderRadius : '40px',
-                    backgroundColor : '#F3F3F3',
-                    color: 'black',
-                    fontSize : '15px',
-                    fontStyle : 'normal',
-                    fontWeight : '400'
-                  },
-                  ".MuiInputBase-input" : {
-                    padding : '1.5rem 2rem',
-                  },
-                  "& input::placeholder": {
-                    color: "#A1A1A1"
-                  }
-                }}
               placeholder='Password'
               fullWidth={true}
-              id="outlined-adornment-weight"
-              aria-describedby="outlined-weight-helper-text"
-              inputProps={{
-                'aria-label': 'weight',
-              }}
+              id="password"
+              aria-describedby="outlined-password"
+            
             />
-            <Button
-              type="submit"
-              variant="contained"
-              sx={{ mt: 3, mb: 2 , textTransform : 'capitalize' , fontSize: "20px",
-              fontStyle: "normal",
-              fontWeight: "700",
-              lineHeight: "normal", color : 'white' }}
-            >
-              Sign In
-            </Button>
+            <Box sx={{
+              marginBottom : '2.5rem',
+              display : 'flex',
+              justifyContent :'end'
+            }}>
+              <Link       
+                underline="hover"
+                variant="subtitle2"
+                >
+                Forgot Password
+              </Link>
+            </Box>
+            <Box sx={{
+              display : 'flex',
+              justifyContent : 'center'
+            }}>
+              <Button
+                type="submit"
+                variant="contained"
+                sx={{  textTransform : 'capitalize' , fontSize: "20px",
+                fontStyle: "normal",
+                fontWeight: "700",
+                lineHeight: "normal", color : 'white', 
+              }}
+              >
+                Sign In
+              </Button>
+            </Box>
           </form>
         </Box>
       </Container>
