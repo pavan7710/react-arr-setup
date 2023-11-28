@@ -13,7 +13,7 @@ export default function SignIn() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    navigate('/admin')
+    navigate('/dashboard')
   }
 
 

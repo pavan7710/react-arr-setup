@@ -1,0 +1,24 @@
+.bg-color  {
+    .img-bottom {
+        margin-bottom:  2rem;
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+    .error_text { 
+        color: #898989;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+    .page_not_found {
+        color: #898989;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        margin-left: 0.5rem;
+    }
+}

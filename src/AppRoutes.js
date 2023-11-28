@@ -1,6 +1,7 @@
 import React from 'react'
 import { Routes , Route  , Outlet } from 'react-router-dom'
 import {  PublicRoutes , PrivateRoutes  } from './Routeconfig'
+import PageNotFound from './PageNotFound/PageNotFound'
 
 
 
@@ -35,13 +36,11 @@ const AppRoutes = () => {
     // };
     
     const RoleAuth = ({ allowedRoles }) => {
-      const auth = 'sales_manager';
+      const auth = 'admin';
       return allowedRoles.find((role) =>  auth === role ) ? (
         <Outlet />
       ) : (
-        <div>
-          <p>page not found</p>
-        </div>
+        <PageNotFound/>
       );
     };
 
@@ -68,7 +67,7 @@ const AppRoutes = () => {
                   </Route>
             )
           })}
-        <Route path='*' element={ <div>Page Nout Found</div> } />
+        <Route path='*' element={<PageNotFound/>}/>
     </Routes>
   )
 }

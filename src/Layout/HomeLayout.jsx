@@ -1,5 +1,5 @@
 import React from 'react'
-import Sidenav from '../modules/common/sidenav/Sidenav'
+import Sidenav from './Sidenav'
 
 const HomeLayout = ({children}) => {
   return (
