@@ -1,18 +1,11 @@
 import React from 'react'
-import { Routes , Route , Navigate } from 'react-router-dom'
-import Sidenav from './Components/Layout/Sidenav';
-import Login from './Components/Authentication/Login/Login'
-import Signup from './Components/Authentication/Signup/Signup'
-
-
+import AppRoutes from './AppRoutes'
 
 function App() {
   return (
-        <Routes>
-          <Route path='/' element= {<Navigate to = "/login" />} />
-          <Route path='/login' element={<Login/>} />
-          <Route path='/Signup' element={<Signup/>} />
-        </Routes>
+       <React.Fragment>
+          <AppRoutes/>
+       </React.Fragment>
   );
 }
 
