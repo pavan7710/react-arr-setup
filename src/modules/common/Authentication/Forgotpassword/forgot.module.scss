@@ -1,19 +1,41 @@
 .passwordforgot {
-    margin-bottom:  2rem;
     .textforgot {
         color: #646464;
         font-size: 24px;
-        font-style: normal;
         font-weight: 600;
         line-height: normal;
         text-align: center;
+        margin: 2rem 0 ;
     }
     .textplease{
         color: #A1A1A1;
         font-size: 15px;
-        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-align: center;
+        margin:  0 0 2rem 0 ;
+    }
+}
+
+.conformation {
+    p {
+        text-align: center;
+        color: #595959;
+        font-size: 20px;
         font-weight: 400;
         line-height: normal;
     }
-
+    .contop {
+        margin-top:  3rem;
+    }
+    .didreceive{
+        color: #0047FF;
+        font-family: Montserrat;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-decoration-line: underline;
+        cursor: pointer;
+    }
 }

@@ -51,7 +51,8 @@ export default function SignIn() {
                 mr :'1.5rem',
                 color : '#0075FF'
               }}>
-                <Link       
+                <Link    
+                  to = '/forgotpassword'   
                   underline="hover"
                   variant="subtitle2"
                   >
