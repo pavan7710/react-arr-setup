@@ -4,11 +4,13 @@ import Salesmanager from '../modules/salesmanager/Salesmanager'
 import HomeLayout from '../Layout/HomeLayout'
 import Dashboard from '../modules/common/dashboard/Dashboard'
 import Forgotpassword from '../modules/common/Authentication/Forgotpassword/Forgotpassword'
+import ResetPassword from '../modules/common/Authentication/ResetPassword/ResetPassword'
 
 export const PublicRoutes = [
     {path : '/' ,  component : Login , layout : 'null'},
     {path : '/login' ,  component : Login , layout : 'null'},
     {path : '/forgotpassword' ,  component : Forgotpassword , layout : 'null'},
+    {path : '/confirmpassword' ,  component : ResetPassword , layout : 'null'},
   ]
   
   

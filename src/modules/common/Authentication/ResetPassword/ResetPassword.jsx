@@ -11,28 +11,22 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 
-const loginSchema = Yup.object().shape({
-  email :  Yup.string().email("Please enter a valid email").required("Required"),
-  password: Yup.string().min(5, 'Minimum 5 characters required').required('Required'),
-})
+
+const passwordSchema = Yup.object().shape({
+    password: Yup.string().min(5 , 'Minimum 5 characters required').required("Required"),
+    confirmpassword: Yup.string().oneOf([Yup.ref("password"), null], "Passwords must match").required("Required"),
+  });
 
 export default function SignIn() {
   const navigate = useNavigate();
-
-
-
-
   const handleSubmit = ( values,actions , isValid ) => {
     // console.log(isValid)
     // navigate('/dashboard')
   }
-
   const [showPassword, setshowPassword] = useState(false)
   const handleTogglePasswordVisibility = () => {
     setshowPassword(!showPassword)
   }
-
-
   return (
     <React.Fragment>
       <Grid container justifyContent="center" alignItems="center" direction="column" sx={{
@@ -44,13 +38,11 @@ export default function SignIn() {
           <img src={logo} alt="logo" />
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
-
         <Formik
-          initialValues={{email : '' , password : ''}}
-          validationSchema={loginSchema}
+          initialValues={{password : '' , confirmpassword : ''}}
+          validationSchema={passwordSchema}
           onSubmit={handleSubmit}
         >
-
           {props => {
             return (
               <Form>
@@ -58,18 +50,18 @@ export default function SignIn() {
                   marginBottom : '2.5rem'
                 }} fullWidth>
                     <OutlinedInput
-                    type = 'email'
-                    name = 'email'
-                    error={props.touched.email && props.errors.email}
-                    placeholder='Email ID'
+                    type = 'password'
+                    name = 'password'
+                    error={props.touched.password && props.errors.password}
+                    placeholder='Password'
                     fullWidth={true}
-                    id="email"
-                    aria-describedby="outlined-email"
+                    id="password"
+                    aria-describedby="outlined-password"
                     onChange = {props.handleChange}
-                    value = {props.values.email}
+                    value = {props.values.password}
                     onBlur={props.handleBlur}
                   />
-                  <FormHelperText id="outlined-weight-helper-text">{props.touched.email && props.errors.email}</FormHelperText>
+                  <FormHelperText id="outlined-weight-helper-text">{props.touched.password && props.errors.password}</FormHelperText>
                 </FormControl>
 
                 <FormControl sx={{
@@ -77,12 +69,12 @@ export default function SignIn() {
                 }} fullWidth>
                     <OutlinedInput
                     type= {showPassword ? 'text' : 'password'}
-                    name = 'password'
-                    placeholder='Password'
+                    name = 'confirmpassword'
+                    placeholder='Confirm Password'
                     fullWidth={true}
-                    id="password"
+                    id="confirmpassword"
                     aria-describedby="outlined-password"
-                    value = {props.values.password}
+                    value = {props.values.confirmpassword}
                     onChange = {props.handleChange}
                     onBlur={props.handleBlur}
                     endAdornment={<InputAdornment position="end">
@@ -94,27 +86,13 @@ export default function SignIn() {
                         {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
                       </IconButton>
                     </InputAdornment>}
-                    error={props.touched.password && props.errors.password}
+                    error={props.touched.confirmpassword && props.errors.confirmpassword}
                     />
-                    <FormHelperText id="outlined-weight-helper-text">{props.touched.password && props.errors.password}</FormHelperText>
+                    <FormHelperText id="outlined-weight-helper-text">{props.touched.confirmpassword && props.errors.confirmpassword}</FormHelperText>
                 </FormControl>
 
              
-              <Box sx={{
-                marginBottom : '2.5rem',
-                display : 'flex',
-                justifyContent :'end',
-                mr :'1.5rem',
-                color : '#0075FF'
-              }}>
-                <Link    
-                  to = '/forgotpassword'   
-                  underline="hover"
-                  variant="subtitle2"
-                  >
-                  Forgot Password
-                </Link>
-              </Box>
+            
               <Box sx={{
                 display : 'flex',
                 justifyContent : 'center'
@@ -131,18 +109,13 @@ export default function SignIn() {
                   px :12
                 }}
                 >
-                  Login
+                  Reset Password
                 </Button>
               </Box>
               </Form>
             )
           }}
-
         </Formik>
-
-     
-
-
         </Grid>
       </Grid>
     </React.Fragment>

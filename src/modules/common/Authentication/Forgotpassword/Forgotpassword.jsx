@@ -3,12 +3,18 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { ReuseOutlinedInput as OutlinedInput } from '../../../../Components/ReuseOutlinedInput'
 import {  useNavigate } from 'react-router-dom';
-import { Grid } from '@mui/material';
+import { Grid , FormControl , FormHelperText } from '@mui/material';
 import logo from '../../../../assests/Logo/logo.png'
 import { Formik , Form } from 'formik';
 import { Link } from 'react-router-dom'
 import styles from './forgot.module.scss'
+import * as Yup from 'yup'
 
+
+
+const forgotSchema = Yup.object().shape({
+    email :  Yup.string().email("Please enter a valid email").required("Required"),
+  })
 
 export default function SignIn() {
     const handleSubmit = () => {
@@ -46,19 +52,28 @@ export default function SignIn() {
                     <Formik
                         initialValues={{email : ''}}
                         onSubmit={handleSubmit}
+                        validationSchema={forgotSchema}
                     >
                         {props => {
                             return (
-                    <Form autoComplete='off'>
-                        <Box>
-                        <OutlinedInput
-                            type = 'text'
-                            placeholder='Email ID'
-                            fullWidth
-                            id="email"
-                            aria-describedby="outlined-email"
-                        />
-                        </Box> 
+                    <Form>
+                        <FormControl fullWidth sx={{
+                            marginBottom : '2.5rem'
+                        }}>
+                            <OutlinedInput
+                                type = 'email'
+                                name="email"
+                                error={props.touched.email && props.errors.email}
+                                placeholder='Email ID'
+                                fullWidth
+                                id="email"
+                                onChange = {props.handleChange}
+                                aria-describedby="outlined-email"
+                                value = {props.values.email}
+                                onBlur={props.handleBlur}
+                            />
+                                <FormHelperText id="outlined-weight-helper-text">{props.touched.email && props.errors.email}</FormHelperText>
+                        </FormControl>
                     <Box sx={{
                         display : 'flex',
                         justifyContent : 'center'

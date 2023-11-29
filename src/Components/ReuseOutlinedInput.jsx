@@ -11,7 +11,7 @@ import { OutlinedInput } from "@mui/material"
           fontSize : '15px',
           fontStyle : 'normal',
           fontWeight : '400',
-          marginBottom : '2.5rem'
+          // marginBottom : '2.5rem'
         },
         ".MuiInputBase-input" : {
           padding : '1.5rem 2rem',
