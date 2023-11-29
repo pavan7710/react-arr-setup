@@ -9,19 +9,34 @@ import { Formik , Form } from 'formik'
 import * as Yup from 'yup'
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-
+import  questionmark from '../../../../assests/Logo/error_icons/Vector.png'
+import cross from '../../../../assests/Logo/error_icons/cross.png'
+import styles from './login.module.scss'
 
 const loginSchema = Yup.object().shape({
-  email :  Yup.string().email("Please enter a valid email").required("Required"),
-  password: Yup.string().min(5, 'Minimum 5 characters required').required('Required'),
+  email :  Yup.string().email("Invalid Email ID").required("Email Is Required"),
+  password: Yup.string().min(8, 'Minimum 8 characters required').required('Required').matches(
+    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]/,
+    'Password must contain at least one letter, one number, and one special character'
+  ),
 })
 
 export default function SignIn() {
+
+  const helpertextemailpassword = {
+    textAlign : 'center',
+    color: "#F00",
+    fontSize: "14px",
+    fontStyle: "normal",
+    fontWeight: "400",
+    lineHeight: "normal",
+    margin : "1rem 0 0 0",
+    display : 'flex',
+    justifyContent : 'center'
+  }
+
+
   const navigate = useNavigate();
-
-
-
-
   const handleSubmit = ( values,actions , isValid ) => {
     // console.log(isValid)
     // navigate('/dashboard')
@@ -55,7 +70,7 @@ export default function SignIn() {
             return (
               <Form>
                 <FormControl sx={{
-                  marginBottom : '2.5rem'
+                  marginBottom : '1rem'
                 }} fullWidth>
                     <OutlinedInput
                     type = 'email'
@@ -69,11 +84,18 @@ export default function SignIn() {
                     value = {props.values.email}
                     onBlur={props.handleBlur}
                   />
-                  <FormHelperText id="outlined-weight-helper-text">{props.touched.email && props.errors.email}</FormHelperText>
+                  { (props.touched.email && props.errors.email) && (
+                    <div className={styles.rooterror} >
+                         <p  className={styles.helpertextemailpassword} >{props.errors.email}</p>
+                         <span className='questionmark'><img src={questionmark} alt = 'cross' /></span>
+                    </div>
+                  ) }
+                  
+
                 </FormControl>
 
                 <FormControl sx={{
-                  marginBottom : '2.5rem'
+                  marginBottom : '1rem'
                 }} fullWidth>
                     <OutlinedInput
                     type= {showPassword ? 'text' : 'password'}
@@ -96,7 +118,18 @@ export default function SignIn() {
                     </InputAdornment>}
                     error={props.touched.password && props.errors.password}
                     />
-                    <FormHelperText id="outlined-weight-helper-text">{props.touched.password && props.errors.password}</FormHelperText>
+                    {/* <FormHelperText sx={helpertextemailpassword} id="outlined-weight-helper-text">
+                      {props.touched.password && props.errors.password}
+                    </FormHelperText> */}
+
+          { (props.touched.password && props.errors.password) && (
+                    <div className={styles.rooterror} >
+                         <p  className={styles.helpertextemailpassword} >{props.errors.password}</p>
+                         <span className='questionmark'><img src={cross} alt = 'cross' /></span>
+                    </div>
+                  ) }
+
+
                 </FormControl>
 
              

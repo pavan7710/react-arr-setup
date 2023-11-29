@@ -2,13 +2,14 @@ import React , {useState} from 'react';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { ReuseOutlinedInput as OutlinedInput } from '../../../../Components/ReuseOutlinedInput'
-import { Link , useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import { Grid , FormHelperText , FormControl , InputAdornment, IconButton } from '@mui/material';
 import logo from '../../../../assests/Logo/logo.png'
 import { Formik , Form } from 'formik'
 import * as Yup from 'yup'
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import styles from './resetpassword.module.scss'
 
 
 
@@ -32,10 +33,11 @@ export default function SignIn() {
       <Grid container justifyContent="center" alignItems="center" direction="column" sx={{
         minHeight : '100vh',
       }}>
-        <Grid item sx={{
-          marginBottom : '3rem'
-        }}>
+        <Grid item >
           <img src={logo} alt="logo" />
+        </Grid>
+        <Grid  className={styles.resetpassword} item xs={12} sm={6} md={4}>
+            <p>Reset Password </p>
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
         <Formik
