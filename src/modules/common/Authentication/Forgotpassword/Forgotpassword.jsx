@@ -33,7 +33,7 @@ export default function SignIn() {
                 </Grid>
             </Grid>
 
-            {/* <Grid className={styles.passwordforgot} item>
+            <Grid className={styles.passwordforgot} item>
                 <p className={styles.textforgot} >Forgot Password ?</p>
                 <p className={styles.textplease} >Please enter your Email ID to send reset link</p>
             </Grid>
@@ -101,16 +101,16 @@ export default function SignIn() {
                     </Formik>
                 </Grid>
                 </Grid>
-            </Grid> */}
+            </Grid>
 
-            <Grid item className={styles.conformation} >
+            {/* <Grid item className={styles.conformation} >
                 <Box className={styles.contop} >
                     <p>Check your mail for reset link!</p>
                     <p>a reset link has been sent to Maxxxxxxxx@ciao.com</p>
                     <p>Click the reset link to reset password</p>
                     <p className= {styles.didreceive} >Didn’t receive an email?</p>
                 </Box>
-            </Grid>
+            </Grid> */}
 
 
 
