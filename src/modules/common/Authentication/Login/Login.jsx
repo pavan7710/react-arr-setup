@@ -47,7 +47,9 @@ export default function SignIn() {
               <Box sx={{
                 marginBottom : '2.5rem',
                 display : 'flex',
-                justifyContent :'end'
+                justifyContent :'end',
+                mr :'1.5rem',
+                color : '#0075FF'
               }}>
                 <Link       
                   underline="hover"
@@ -69,7 +71,7 @@ export default function SignIn() {
                   lineHeight: "normal", color : 'white', 
                   borderRadius : '40px',
                   py : 2,
-                  px :5
+                  px :12
                 }}
                 >
                   Login

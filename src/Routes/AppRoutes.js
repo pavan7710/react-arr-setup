@@ -1,7 +1,7 @@
 import React from 'react'
 import { Routes , Route  , Outlet } from 'react-router-dom'
 import {  PublicRoutes , PrivateRoutes  } from './Routeconfig'
-import PageNotFound from './PageNotFound/PageNotFound'
+import PageNotFound from '../PageNotFound/PageNotFound'
 
 
 
@@ -28,13 +28,10 @@ const AppRoutes = () => {
         </Layout>
       );
     };
-
-
     // const TokenAuth = () => {
     //   const token = true;
     //   return token ? <Outlet /> : window.location.replace('/login');
     // };
-    
     const RoleAuth = ({ allowedRoles }) => {
       const auth = 'admin';
       return allowedRoles.find((role) =>  auth === role ) ? (

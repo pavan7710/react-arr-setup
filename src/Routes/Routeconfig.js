@@ -1,12 +1,11 @@
-import Login from './modules/common/Authentication/Login/Login'
-import Admin from './modules/admin/admin'
-import Salesmanager from './modules/salesmanager/Salesmanager'
-import HomeLayout from './Layout/HomeLayout'
-import Dashboard from './modules/common/dashboard/Dashboard'
+import Login from '../modules/common/Authentication/Login/Login'
+import Admin from '../modules/admin/admin'
+import Salesmanager from '../modules/salesmanager/Salesmanager'
+import HomeLayout from '../Layout/HomeLayout'
+import Dashboard from '../modules/common/dashboard/Dashboard'
 
 export const PublicRoutes = [
     {path : '/' ,  component : Login , layout : 'null'  },
-    {path : '/login' ,  component : Login , layout : 'null'  },
     {path : '/login' ,  component : Login , layout : 'null'  },
   ]
   
