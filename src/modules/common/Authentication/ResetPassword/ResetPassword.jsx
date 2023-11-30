@@ -38,13 +38,11 @@ export default function SignIn() {
   return (
     <React.Fragment>
       <Grid
+        className={styles.root}
         container
         justifyContent="center"
         alignItems="center"
         direction="column"
-        sx={{
-          minHeight: "100vh",
-        }}
       >
         <Grid item>
           <img src={logo} alt="logo" />
@@ -126,12 +124,7 @@ export default function SignIn() {
                     </FormHelperText>
                   </FormControl>
 
-                  <Box
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                    }}
-                  >
+                  <Box className={styles.buttonreset}>
                     <Button
                       onClick={handleSubmit}
                       type="submit"
