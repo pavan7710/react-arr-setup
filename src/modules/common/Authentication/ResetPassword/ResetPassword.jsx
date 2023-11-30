@@ -28,8 +28,7 @@ const passwordSchema = Yup.object().shape({
 export default function SignIn() {
   const navigate = useNavigate();
   const handleSubmit = (values, actions, isValid) => {
-    // console.log(isValid)
-    // navigate('/dashboard')
+    
   };
   const [showPassword, setshowPassword] = useState(false);
   const handleTogglePasswordVisibility = () => {

@@ -31,7 +31,6 @@ export default function SignIn() {
       navigate('/dashboard')
     }
 
-    // console.log(isValid)
   };
 
   const [showPassword, setshowPassword] = useState(false);
