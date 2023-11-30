@@ -8,40 +8,36 @@
 //     margin :0;
 //     align-self: center;
 
-
 //     .questionmark {
 //         align-self:  end;
 //     }
-
 
 //     // style={{
 //     //     display : 'flex',
 //     //     justifyContent : 'center',
 //     //     marginTop : '1rem'
-//     //   }} 
+//     //   }}
 
 // }
 
 .rooterror {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
 
-            display : flex;
-           justify-content : center;
-            margin-top : 1rem;
-
-    .helpertextemailpassword {
-        text-align:  center;
-        color : #F00;
-         font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        margin :0;
-        align-self: center;
-        margin-right: 0.5rem;
-    
-    }
-        .questionmark {
-            align-self:  end;
-            margin-right: 0.5rem;
-        }
+  .helpertextemailpassword {
+    text-align: center;
+    color: #f00;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+    align-self: center;
+    margin-right: 0.5rem;
+  }
+  .questionmark {
+    align-self: end;
+    margin-right: 0.5rem;
+  }
 }
