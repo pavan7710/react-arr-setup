@@ -8,12 +8,13 @@ import logo from '../../../../assests/Logo/logo.png'
 import { Formik , Form } from 'formik';
 import { Link } from 'react-router-dom'
 import styles from './forgot.module.scss'
+import { emailValidation } from 'src/utlis/RFvalidation'
 import * as Yup from 'yup'
 
 
 
 const forgotSchema = Yup.object().shape({
-    email :  Yup.string().email("Please enter a valid email").required("Required"),
+    email :   emailValidation ,
   })
 
 export default function SignIn() {

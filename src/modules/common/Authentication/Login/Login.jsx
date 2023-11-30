@@ -2,6 +2,7 @@ import React , {useState} from 'react';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { ReuseOutlinedInput as OutlinedInput } from 'src/Components/ReuseOutlinedInput'
+import { passwordValidationSchema } from 'src/utlis/RFvalidation'
 import { Link , useNavigate } from 'react-router-dom';
 import { Grid , FormHelperText , FormControl , InputAdornment, IconButton } from '@mui/material';
 import {LOGO , CROSS , VECTOR } from 'src/assests/index'
@@ -13,10 +14,7 @@ import styles from './login.module.scss'
 
 const loginSchema = Yup.object().shape({
   email :  Yup.string().email("Invalid Email ID").required("Email Is Required"),
-  password: Yup.string().min(8, 'Minimum 8 characters required').required('Required').matches(
-    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]/,
-    'Password must contain at least one letter, one number, and one special character'
-  ),
+  password: passwordValidationSchema
 })
 
 export default function SignIn() {
@@ -82,12 +80,12 @@ export default function SignIn() {
                     value = {props.values.email}
                     onBlur={props.handleBlur}
                   />
-                  { (props.touched.email && props.errors.email) && (
+                  {(props.touched.email && props.errors.email) ? (
                     <div className={styles.rooterror} >
                          <p  className={styles.helpertextemailpassword} >{props.errors.email}</p>
                          <span className='questionmark'><img src={ CROSS } alt = 'cross' /></span>
                     </div>
-                  ) }
+                  ) : null}
                   
 
                 </FormControl>
@@ -116,18 +114,12 @@ export default function SignIn() {
                     </InputAdornment>}
                     error={props.touched.password && props.errors.password}
                     />
-                    {/* <FormHelperText sx={helpertextemailpassword} id="outlined-weight-helper-text">
-                      {props.touched.password && props.errors.password}
-                    </FormHelperText> */}
-
-          { (props.touched.password && props.errors.password) && (
-                    <div className={styles.rooterror} >
-                         <p  className={styles.helpertextemailpassword} >{props.errors.password}</p>
-                         <span className='questionmark'><img src={VECTOR} alt = 'cross' /></span>
-                    </div>
-                  ) }
-
-
+                    {(props.touched.password && props.errors.password) ? (
+                      <div className={styles.rooterror} >
+                          <p  className={styles.helpertextemailpassword} >{props.errors.password}</p>
+                          <span className='questionmark'><img src={VECTOR} alt = 'cross' /></span>
+                      </div>
+                    ) : null }
                 </FormControl>
 
              
@@ -162,7 +154,7 @@ export default function SignIn() {
                   px :12
                 }}
                 >
-                  Loginn
+                  Login
                 </Button>
               </Box>
               </Form>

@@ -12,7 +12,6 @@ export const PublicRoutes = [
     {path : '/login' ,  component : Login , layout : 'null'},
     {path : '/forgotpassword' ,  component : Forgotpassword , layout : 'null'},
     {path : '/confirmpassword' ,  component : ResetPassword , layout : 'null'},
-    {path : '/confirmpassword' ,  component : ResetPassword , layout : 'null'},
     {path : '/updatedsuccessfully' ,  component : UpdatedSuccessfully , layout : 'null'},
   ]
   

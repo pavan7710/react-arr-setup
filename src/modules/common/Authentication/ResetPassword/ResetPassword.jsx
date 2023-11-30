@@ -10,11 +10,12 @@ import * as Yup from 'yup'
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import styles from './resetpassword.module.scss'
+import { passwordValidationSchema } from 'src/utlis/RFvalidation'
 
 
 
 const passwordSchema = Yup.object().shape({
-    password: Yup.string().min(5 , 'Minimum 5 characters required').required("Required"),
+    password: passwordValidationSchema,
     confirmpassword: Yup.string().oneOf([Yup.ref("password"), null], "Passwords must match").required("Required"),
   });
 
