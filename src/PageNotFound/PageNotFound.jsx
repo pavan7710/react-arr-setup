@@ -1,5 +1,5 @@
 import React from 'react'
-import pagenotfound from '../assests/Logo/pagenotfound.png'
+import {  NOTFOUND } from 'src/assests/index'
 import { Grid  , Button } from '@mui/material'
 import { useNavigate } from 'react-router-dom';
 import  styles from './pagenotfound.module.scss'
@@ -18,7 +18,7 @@ const PageNotFound = () => {
             height :'100vh'
         }} container justifyContent="center" alignItems="center" direction="column">
             <Grid  className={styles.imgbottom} item sx={12} >
-                <img className={styles.imgfluid} src={pagenotfound} alt='page_not_found' />
+                <img className={styles.imgfluid} src={NOTFOUND} alt='page_not_found' />
             </Grid>
 
             <Grid item sx={12}>

@@ -1,9 +1,8 @@
 import React  from 'react';
 import {  useNavigate } from 'react-router-dom';
 import { Grid , Button , Box } from '@mui/material';
-import logo from '../../../../assests/Logo/logo.png'
+import {LOGO , LOCKICON } from 'src/assests/index'
 import styles from './Updated.module.scss';
-import lock from '../../../../assests/Logo/reset-password 1.png'
 
 
 
@@ -20,11 +19,11 @@ export default function SignIn() {
         minHeight : '100vh',
       }}>
         <Grid item>
-          <img src={logo} alt="logo" />
+          <img src={LOGO} alt="logo" />
         </Grid>
 
         <Grid item className={styles.lockimage}>
-            <img src={lock} alt = "lock" />
+            <img src={LOCKICON} alt = "lock" />
         </Grid>
 
         <Grid className={styles.successfully} item xs={12} sm={6} md={4}>

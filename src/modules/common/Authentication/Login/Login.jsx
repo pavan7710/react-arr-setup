@@ -1,16 +1,14 @@
 import React , {useState} from 'react';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import { ReuseOutlinedInput as OutlinedInput } from '../../../../Components/ReuseOutlinedInput'
+import { ReuseOutlinedInput as OutlinedInput } from 'src/Components/ReuseOutlinedInput'
 import { Link , useNavigate } from 'react-router-dom';
 import { Grid , FormHelperText , FormControl , InputAdornment, IconButton } from '@mui/material';
-import logo from '../../../../assests/Logo/logo.png'
+import {LOGO , CROSS , VECTOR } from 'src/assests/index'
 import { Formik , Form } from 'formik'
 import * as Yup from 'yup'
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import  questionmark from '../../../../assests/Logo/error_icons/Vector.png'
-import cross from '../../../../assests/Logo/error_icons/cross.png'
 import styles from './login.module.scss'
 
 const loginSchema = Yup.object().shape({
@@ -56,7 +54,7 @@ export default function SignIn() {
         <Grid item sx={{
           marginBottom : '3rem'
         }}>
-          <img src={logo} alt="logo" />
+          <img src={LOGO} alt="logo" />
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
 
@@ -87,7 +85,7 @@ export default function SignIn() {
                   { (props.touched.email && props.errors.email) && (
                     <div className={styles.rooterror} >
                          <p  className={styles.helpertextemailpassword} >{props.errors.email}</p>
-                         <span className='questionmark'><img src={questionmark} alt = 'cross' /></span>
+                         <span className='questionmark'><img src={ CROSS } alt = 'cross' /></span>
                     </div>
                   ) }
                   
@@ -125,7 +123,7 @@ export default function SignIn() {
           { (props.touched.password && props.errors.password) && (
                     <div className={styles.rooterror} >
                          <p  className={styles.helpertextemailpassword} >{props.errors.password}</p>
-                         <span className='questionmark'><img src={cross} alt = 'cross' /></span>
+                         <span className='questionmark'><img src={VECTOR} alt = 'cross' /></span>
                     </div>
                   ) }
 
