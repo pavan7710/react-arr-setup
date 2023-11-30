@@ -26,8 +26,12 @@ const loginSchema = Yup.object().shape({
 export default function SignIn() {
   const navigate = useNavigate();
   const handleSubmit = (values, actions, isValid) => {
+
+    if(values.email && values.password){
+      navigate('/dashboard')
+    }
+
     // console.log(isValid)
-    // navigate('/dashboard')
   };
 
   const [showPassword, setshowPassword] = useState(false);
@@ -60,7 +64,7 @@ export default function SignIn() {
                 <Form>
                   <FormControl
                     sx={{
-                      marginBottom: "1rem",
+                      marginBottom:  props.touched.email && props.errors.email ? '1rem' : '3rem' ,
                     }}
                     fullWidth
                   >
