@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Grid, Button, Box } from "@mui/material";
 import { LOGO, LOCKICON } from "src/assests/index";
-import styles from "./Updated.module.scss";
+import styles from "./updated.module.scss";
 
 export default function SignIn() {
   const navigate = useNavigate();
@@ -13,6 +13,7 @@ export default function SignIn() {
   return (
     <React.Fragment>
       <Grid
+        className={styles.updatedscreen}
         container
         justifyContent="center"
         alignItems="center"
@@ -40,18 +41,11 @@ export default function SignIn() {
             justifyContent: "center",
           }}
         >
-          <Button
+          <Button className={styles.lockimage}
             onClick={handleSubmit}
             type="submit"
             variant="contained"
             sx={{
-              textTransform: "capitalize",
-              fontSize: "20px",
-              fontStyle: "normal",
-              fontWeight: "700",
-              lineHeight: "normal",
-              color: "white",
-              borderRadius: "40px",
               py: 2,
               px: 12,
             }}

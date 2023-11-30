@@ -24,18 +24,6 @@ const loginSchema = Yup.object().shape({
 });
 
 export default function SignIn() {
-  const helpertextemailpassword = {
-    textAlign: "center",
-    color: "#F00",
-    fontSize: "14px",
-    fontStyle: "normal",
-    fontWeight: "400",
-    lineHeight: "normal",
-    margin: "1rem 0 0 0",
-    display: "flex",
-    justifyContent: "center",
-  };
-
   const navigate = useNavigate();
   const handleSubmit = (values, actions, isValid) => {
     // console.log(isValid)
@@ -50,19 +38,14 @@ export default function SignIn() {
   return (
     <React.Fragment>
       <Grid
+        className={styles.rootgrid}
         container
         justifyContent="center"
         alignItems="center"
         direction="column"
-        sx={{
-          minHeight: "100vh",
-        }}
+        
       >
-        <Grid
-          item
-          sx={{
-            marginBottom: "3rem",
-          }}
+        <Grid className= {styles.imageItem} item
         >
           <img src={LOGO} alt="logo" />
         </Grid>
@@ -151,13 +134,7 @@ export default function SignIn() {
                   </FormControl>
 
                   <Box
-                    sx={{
-                      marginBottom: "2.5rem",
-                      display: "flex",
-                      justifyContent: "end",
-                      mr: "1.5rem",
-                      color: "#0075FF",
-                    }}
+                    className={styles.forgotpassword}
                   >
                     <Link
                       to="/forgotpassword"
@@ -167,24 +144,12 @@ export default function SignIn() {
                       Forgot Password
                     </Link>
                   </Box>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                    }}
-                  >
+                  <Box className={styles.loginbutton}>
                     <Button
                       onClick={handleSubmit}
                       type="submit"
                       variant="contained"
                       sx={{
-                        textTransform: "capitalize",
-                        fontSize: "20px",
-                        fontStyle: "normal",
-                        fontWeight: "700",
-                        lineHeight: "normal",
-                        color: "white",
-                        borderRadius: "40px",
                         py: 2,
                         px: 12,
                       }}

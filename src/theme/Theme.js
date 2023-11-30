@@ -9,8 +9,25 @@ export default createTheme({
       main: arcGreen,
     },
   },
-
   typography: {
     fontFamily: ["Montserrat"],
   },
+
+  components : {
+    MuiButton : {
+      styleOverrides : {
+        root : {
+          textTransform: "capitalize",
+          fontSize: "20px",
+          fontStyle: "normal",
+          fontWeight: "700",
+          lineHeight: "normal",
+          color: "white",
+          borderRadius: "40px",
+  
+        }
+      }
+    }
+  }
+
 });

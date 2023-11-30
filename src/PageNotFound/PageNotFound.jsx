@@ -42,13 +42,6 @@ const PageNotFound = () => {
             onClick={gotohome}
             variant="contained"
             sx={{
-              textTransform: "capitalize",
-              fontSize: "20px",
-              fontStyle: "normal",
-              fontWeight: "700",
-              lineHeight: "normal",
-              color: "white",
-              borderRadius: "40px",
               py: 2,
               px: 5,
               mt: 3,

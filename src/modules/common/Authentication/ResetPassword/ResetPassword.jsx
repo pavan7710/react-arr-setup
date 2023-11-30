@@ -137,13 +137,6 @@ export default function SignIn() {
                       type="submit"
                       variant="contained"
                       sx={{
-                        textTransform: "capitalize",
-                        fontSize: "20px",
-                        fontStyle: "normal",
-                        fontWeight: "700",
-                        lineHeight: "normal",
-                        color: "white",
-                        borderRadius: "40px",
                         py: 2,
                         px: 12,
                       }}
