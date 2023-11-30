@@ -128,15 +128,6 @@ export default function SignIn() {
             </Grid>
           </Grid>
         </Grid>
-
-        {/* <Grid item className={styles.conformation} >
-                <Box className={styles.contop} >
-                    <p>Check your mail for reset link!</p>
-                    <p>a reset link has been sent to Maxxxxxxxx@ciao.com</p>
-                    <p>Click the reset link to reset password</p>
-                    <p className= {styles.didreceive} >Didn’t receive an email?</p>
-                </Box>
-            </Grid> */}
       </Grid>
     </React.Fragment>
   );

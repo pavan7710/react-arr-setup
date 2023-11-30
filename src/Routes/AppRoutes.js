@@ -26,10 +26,6 @@ const AppRoutes = () => {
       </Layout>
     );
   };
-  // const TokenAuth = () => {
-  //   const token = true;
-  //   return token ? <Outlet /> : window.location.replace('/login');
-  // };
   const RoleAuth = ({ allowedRoles }) => {
     const auth = "admin";
     return allowedRoles.find((role) => auth === role) ? (
