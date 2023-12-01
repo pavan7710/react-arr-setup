@@ -1,0 +1,29 @@
+
+.closeImage {
+    display:  flex;
+    justify-content:  end;
+}
+
+.contactImage {
+    display: flex;
+    justify-content:  center;
+    align-items: center;
+    flex-direction: column;
+    .invite {
+        color: #535353;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+}
+
+.rootform{
+    .userbutton {
+        display: flex;
+        justify-content: center;
+    }
+    .helpertext {
+        color:  red;
+    }
+}

@@ -6,15 +6,19 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@emotion/react";
 import createTheme from "./theme/Theme";
+import { Provider } from 'react-redux'
+import store from './store'
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={createTheme}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={createTheme}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ThemeProvider>
+    </Provider>
   </React.StrictMode>
 );
 
