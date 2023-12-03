@@ -10,7 +10,10 @@ export default createTheme({
     },
   },
   typography: {
-    fontFamily: ["Montserrat"],
+    fontFamily: [
+      'Montserrat',
+      'sans-serif',
+    ].join(','),
   },
 
   components : {

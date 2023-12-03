@@ -7,8 +7,12 @@ const initialState = {
 
 export const dashboard = (state = initialState , action) => {
     const { type , payload } = action
-
     switch (type) {
+        case 'OPEN_CLOSE_INVITE_DIALOG' : 
+            return {
+                ...state,
+                openClose : payload   
+            }
         case types.CREATE_USER:
             return {
                 ...state,
@@ -19,7 +23,6 @@ export const dashboard = (state = initialState , action) => {
                 ...state,
                 isLoading : false
             }
-        
         default:
             return state
     }

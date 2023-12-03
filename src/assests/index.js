@@ -11,6 +11,7 @@ import NOTFOUND from './page_not_found/pagenotfound.png'
 // other icons
 import LOCKICON from './other_icons/reset-password 1.png'
 import CONTACT  from './other_icons/contact 1.png'
+import CONTACTADDED from './other_icons/contact_added.png'
 import CLOSE from './other_icons/cross (2) 1.png'
 
 export {
@@ -20,5 +21,6 @@ export {
     NOTFOUND,
     LOCKICON,
     CONTACT,
-    CLOSE
+    CLOSE,
+    CONTACTADDED
 }

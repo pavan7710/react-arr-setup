@@ -2,21 +2,25 @@ import React , {useState} from 'react'
 import { Button }  from "@mui/material"
 import Dialog from 'src/Components/Dialog'
 import InviteForm from './InviteForm'
+import { useSelector , useDispatch } from 'react-redux'
 
 
 const Inviteuser = () => {
-
-
-    const [open, setopen] = useState(false)
-
+    const dispatch = useDispatch()
+    const inviteData = useSelector((state) => state.dashboard)
     const openDialog = () => {
-        setopen(true)
-    }
+        dispatch({
+            type : "OPEN_CLOSE_INVITE_DIALOG",
+            payload : true
+        })
 
+    }
     const handleClose = () => {
-        setopen(false)
+        dispatch({
+            type : "OPEN_CLOSE_INVITE_DIALOG",
+            payload : false
+        })
     }
-
     const inviteform = <InviteForm/>
   return (
     <React.Fragment>
@@ -25,11 +29,11 @@ const Inviteuser = () => {
         PaperProps = {{
             style : {
                 borderRadius : '40px',
-                width : "35%"
+                width : "35%",
             }
         }}
         fullWidth={false}
-        open={open}
+        open={ inviteData.openClose}
         onClose={handleClose}
         content= {inviteform}
         />

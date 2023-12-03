@@ -2,6 +2,7 @@
 .closeImage {
     display:  flex;
     justify-content:  end;
+    cursor: pointer;
 }
 
 .contactImage {
@@ -12,10 +13,21 @@
     .invite {
         color: #535353;
         font-size: 24px;
-        font-style: normal;
         font-weight: 500;
-        line-height: normal;
     }
+    .mbzero {
+        margin-bottom:  0;
+    }
+    .mtone {
+        margin-top:  1rem;
+    }
+
+    .closewindow {
+        color: #535353;
+        font-size: 13px;
+        font-weight: 500;
+    }
+
 }
 
 .rootform{
