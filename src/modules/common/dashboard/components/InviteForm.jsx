@@ -8,16 +8,15 @@ import styles from './inviteform.module.scss'
 import {  useDispatch } from 'react-redux'
 import { create_user } from 'src/actions/Dashboard/actions'
 import LoadingButton from '@mui/lab/LoadingButton';
+import { emailValidation , phoneNumberValidation , firstnameValidation , lastnameValidation , roleValidation } from 'src/utlis/RFvalidation'
 
 
 const validationSchema = Yup.object({
-    first_name: Yup.string().required('First Name is required'),
-    last_name: Yup.string().required('Last Name is required'),
-    email: Yup.string().email('Invalid email address').required('Email is required'),
-    contact: Yup.string()
-    .matches(/^[0-9]{10}$/, 'Phone number must be exactly 10 digits')
-    .required('Phone number is required'),
-    role : Yup.string().required('First Name is required')
+    first_name:  firstnameValidation,
+    last_name: lastnameValidation,
+    email:  emailValidation ,
+    contact: phoneNumberValidation,
+    role : roleValidation
   });
 const InviteForm = () => {
     const dispatch = useDispatch()
@@ -72,7 +71,6 @@ const InviteForm = () => {
                     <Stack spacing={1}>
                             <FormControl>
                                 <OutlinedInput
-                                onC
                                 fullWidth
                                 type = "text"
                                 name = "first_name"
@@ -113,7 +111,7 @@ const InviteForm = () => {
                             <FormControl fullWidth >
                                 <OutlinedInput
                                 fullWidth
-                                type = "text"
+                                type = "number"
                                 name = "contact"
                                 placeholder = "Contact Number"
                                 id = "phone_number"

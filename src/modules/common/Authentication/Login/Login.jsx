@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import { ReuseOutlinedInput as OutlinedInput } from "src/Components/ReuseOutlinedInput";
-import { passwordValidationSchema } from "src/utlis/RFvalidation";
+import { passwordValidationSchema , emailValidation } from "src/utlis/RFvalidation";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Grid,
@@ -19,7 +19,7 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import styles from "./login.module.scss";
 
 const loginSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid Email ID").required("Email Is Required"),
+  email: emailValidation,
   password: passwordValidationSchema,
 });
 
