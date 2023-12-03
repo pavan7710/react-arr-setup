@@ -72,7 +72,6 @@ const InviteForm = () => {
                     <Stack spacing={1}>
                             <FormControl>
                                 <OutlinedInput
-                                onC
                                 fullWidth
                                 type = "text"
                                 name = "first_name"
