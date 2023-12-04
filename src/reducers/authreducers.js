@@ -31,6 +31,16 @@ export const authReducer = (state = initialState , action) => {
                 isLoading : false,
                 login : {}
             }
+        case types.FORGOT_PASSWORD :
+            return {
+                ...state,
+                isLoading : true
+            }
+        case types.SUCCESS_FORGOT_PASSWORD : 
+            return {
+                ...state,
+                isLoading : false
+            }
         default:
             return state
     }

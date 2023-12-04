@@ -1,22 +1,37 @@
 import React from "react";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import { ReuseOutlinedInput as OutlinedInput } from "../../../../Components/ReuseOutlinedInput";
+import { ReuseOutlinedInput as OutlinedInput } from "src/Components/ReuseOutlinedInput";
 import { useNavigate } from "react-router-dom";
 import { Grid, FormControl, FormHelperText } from "@mui/material";
-import logo from "../../../../assests/Logo/logo.png";
+import { LOGO , CROSS } from 'src/assests/index'
 import { Formik, Form } from "formik";
 import { Link } from "react-router-dom";
 import styles from "./forgot.module.scss";
 import { emailValidation } from "src/utlis/RFvalidation";
 import * as Yup from "yup";
+import { useDispatch , useSelector } from 'react-redux'
+import { forgot_password } from 'src/actions/Authentication/actions'
+import LoadingButton from '@mui/lab/LoadingButton';
 
 const forgotSchema = Yup.object().shape({
   email: emailValidation,
 });
 
 export default function SignIn() {
-  const handleSubmit = () => {};
+  const navigate = useNavigate()
+  const dataforgot = useSelector((state) => state.authReducer)
+
+  const dispatch = useDispatch()
+  const handleSubmit = (values , actions) => {
+      dispatch( forgot_password(values , (res) => {
+        if(res.status === 200){
+          navigate('/confirmpassword')
+        }else{
+
+        }
+      } ))
+  };
   return (
     <React.Fragment>
       <Grid
@@ -36,7 +51,7 @@ export default function SignIn() {
                   justifyContent: "center",
                 }}
               >
-                <img src={logo} alt="logo" />
+                <img src={LOGO} alt="logo" />
               </Box>
             </Grid>
           </Grid>
@@ -85,9 +100,18 @@ export default function SignIn() {
                           value={props.values.email}
                           onBlur={props.handleBlur}
                         />
-                        <FormHelperText id="outlined-weight-helper-text">
-                          {props.touched.email && props.errors.email}
-                        </FormHelperText>
+
+                      {props.touched.email && props.errors.email ? (
+                      <div className={styles.rooterror}>
+                        <p className={styles.helpertextemailpassword}>
+                          {props.errors.email}
+                        </p>
+                        <span className="questionmark">
+                          <img src={CROSS} alt="cross" />
+                        </span>
+                      </div>
+                    ) : null}
+                     
                       </FormControl>
                       <Box
                         sx={{
@@ -95,7 +119,8 @@ export default function SignIn() {
                           justifyContent: "center",
                         }}
                       >
-                        <Button
+                        <LoadingButton
+                          loading={dataforgot?.isLoading}
                           type="submit"
                           variant="contained"
                           sx={{
@@ -104,7 +129,7 @@ export default function SignIn() {
                           }}
                         >
                           Request Password reset
-                        </Button>
+                        </LoadingButton>
                       </Box>
 
                       <Box

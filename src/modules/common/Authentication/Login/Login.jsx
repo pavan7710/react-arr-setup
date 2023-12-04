@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import { ReuseOutlinedInput as OutlinedInput } from "src/Components/ReuseOutlinedInput";
 import { passwordValidationSchema , emailValidation } from "src/utlis/RFvalidation";
@@ -17,8 +16,9 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import styles from "./login.module.scss";
 import { login_user } from 'src/actions/Authentication/actions'
-import {  useDispatch } from 'react-redux'
-
+import {  useDispatch , useSelector } from 'react-redux'
+import LoadingButton from '@mui/lab/LoadingButton';
+import { toast } from 'react-toastify'
 
 const loginSchema = Yup.object().shape({
   email: emailValidation,
@@ -27,15 +27,21 @@ const loginSchema = Yup.object().shape({
 
 export default function SignIn() {
   const dispatch = useDispatch()
+  const loginData =  useSelector((state) => state.authReducer)
   const navigate = useNavigate();
   const handleSubmit = (values, actions, isValid) => {
-    dispatch(  login_user(values , (res) => {
-      if(res){
-        console.log(res)
+    dispatch(login_user(values , (res) => {
+      if(res.status === 200){
+        navigate('/dashboard')
+        toast.success(res.data.message , {
+          position: toast.POSITION.TOP_RIGHT
+        } )
       }else{
+        toast.error( res.response.data.message , {
+          position: toast.POSITION.TOP_RIGHT
+        } )
       }
     } ) )
-
   };
 
   const [showPassword, setshowPassword] = useState(false);
@@ -79,10 +85,10 @@ export default function SignIn() {
                       placeholder="Email ID"
                       fullWidth={true}
                       id="email"
-                      aria-describedby="outlined-email"
                       onChange={props.handleChange}
                       value={props.values.email}
                       onBlur={props.handleBlur}
+                      
                     />
                     {props.touched.email && props.errors.email ? (
                       <div className={styles.rooterror}>
@@ -153,16 +159,13 @@ export default function SignIn() {
                     </Link>
                   </Box>
                   <Box className={styles.loginbutton}>
-                    <Button
-                      type="submit"
-                      variant="contained"
+                  <LoadingButton type='submit' variant='contained' loading={loginData?.isLoading}
                       sx={{
                         py: 2,
                         px: 12,
-                      }}
-                    >
+                      }} > 
                       Login
-                    </Button>
+                    </LoadingButton>
                   </Box>
                 </Form>
               );

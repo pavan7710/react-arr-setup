@@ -16,6 +16,27 @@
     margin: 0 0 2rem 0;
   }
 }
+.rooterror {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+
+  .helpertextemailpassword {
+    text-align: center;
+    color: #f00;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+    align-self: center;
+    margin-right: 0.5rem;
+  }
+  .questionmark {
+    align-self: end;
+    margin-right: 0.5rem;
+  }
+}
 
 .conformation {
   p {
