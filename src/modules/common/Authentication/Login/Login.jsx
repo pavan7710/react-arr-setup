@@ -6,7 +6,6 @@ import { passwordValidationSchema , emailValidation } from "src/utlis/RFvalidati
 import { Link, useNavigate } from "react-router-dom";
 import {
   Grid,
-  FormHelperText,
   FormControl,
   InputAdornment,
   IconButton,
@@ -17,6 +16,9 @@ import * as Yup from "yup";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import styles from "./login.module.scss";
+import { login_user } from 'src/actions/Authentication/actions'
+import {  useDispatch } from 'react-redux'
+
 
 const loginSchema = Yup.object().shape({
   email: emailValidation,
@@ -24,12 +26,15 @@ const loginSchema = Yup.object().shape({
 });
 
 export default function SignIn() {
+  const dispatch = useDispatch()
   const navigate = useNavigate();
   const handleSubmit = (values, actions, isValid) => {
-
-    if(values.email && values.password){
-      navigate('/dashboard')
-    }
+    dispatch(  login_user(values , (res) => {
+      if(res){
+        console.log(res)
+      }else{
+      }
+    } ) )
 
   };
 
@@ -149,7 +154,6 @@ export default function SignIn() {
                   </Box>
                   <Box className={styles.loginbutton}>
                     <Button
-                      onClick={handleSubmit}
                       type="submit"
                       variant="contained"
                       sx={{
