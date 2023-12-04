@@ -20,7 +20,7 @@ import { OutlinedInput } from "@mui/material"
         },
         ...sx
       }}
-            {...rest}
+        {...rest}
       />
   )
 }

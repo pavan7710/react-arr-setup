@@ -1,0 +1,9 @@
+export const LOGIN = "LOGIN";
+export const SUCCESS_LOGIN = "SUCCESS_LOGIN";
+export const LOGIN_FAIL = "LOGIN_FAIL";
+
+
+
+export const FORGOT_PASSWORD = "FORGOT_PASSWORD";
+export const SUCCESS_FORGOT_PASSWORD = "SUCCESS_FORGOT_PASSWORD";
+
