@@ -13,6 +13,7 @@ import LOCKICON from './other_icons/reset-password 1.png'
 import CONTACT  from './other_icons/contact 1.png'
 import CONTACTADDED from './other_icons/contact_added.png'
 import CLOSE from './other_icons/cross (2) 1.png'
+import USERICON from './other_icons/user.png'
 
 export {
     LOGO,
@@ -22,5 +23,6 @@ export {
     LOCKICON,
     CONTACT,
     CLOSE,
-    CONTACTADDED
+    CONTACTADDED,
+    USERICON
 }

@@ -7,7 +7,6 @@ import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -19,6 +18,9 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { Outlet } from 'react-router-dom';
+import { Tooltip , Stack , Avatar } from '@mui/material'
+import LogoutIcon from '@mui/icons-material/Logout';
+import { USERICON } from 'src/assests/index'
 
 const drawerWidth = 240;
 
@@ -111,13 +113,40 @@ boxShadow: "0px 4px 21px 0px rgba(0, 0, 0, 0.25)",
 }}  variant="permanent" open={open}>
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            { open ? <ChevronLeftIcon />  : <ChevronRightIcon /> }
           </IconButton>
         </DrawerHeader>
+        <Stack sx={{
+          mb :3
+        }} direction="column" justifyContent="center" alignItems="center" spacing={2}>
+          <Box sx={{
+            pb :2
+          }}>
+            <Avatar alt="Remy Sharp" src={USERICON} />
+          </Box>
 
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+          {open ? (
+            <React.Fragment>
+                 <p style={{
+            fontSize : "16px",
+            color : "#000",
+            fontWeight : 400,
+            margin : "0rem"
+          }} >Pavan Bollineni</p>
+          <p style={{
+            margin : "0rem"
+          }}>Admin</p>
+            </React.Fragment>
+          ) : null }
+          
+        </Stack>
+        <List sx={{
+          display : 'flex',
+          flexDirection : 'column',
+          height : '100%'
+        }} >
+          {['Dashboard'].map((text, index) => (
+            <ListItem   key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -141,6 +170,47 @@ boxShadow: "0px 4px 21px 0px rgba(0, 0, 0, 0.25)",
               </ListItemButton>
             </ListItem>
           ))}
+
+         <Box sx={{
+          display : 'flex',
+          justifyContent : 'end',
+          flexDirection : 'column',
+          height : '100%',
+        }}>
+          <List>
+          <ListItem  
+                disablePadding 
+                sx={{ 
+                  display: 'block',
+                  '&:hover' : {
+                    backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                  },
+                  mb : 1,
+                  color : 'black'
+                  }}>
+                  <ListItemButton
+                    sx={{
+                      minHeight: 48,
+                      justifyContent: open ? 'initial' : 'center',
+                      px: 2.5,
+                    }}
+                  >
+                    <Tooltip title="Log Out">
+                      <ListItemIcon 
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : 'auto',
+                          justifyContent: 'center',
+                        }}
+                      >
+                        <LogoutIcon/>
+                      </ListItemIcon>
+                    </Tooltip>
+                    <ListItemText primary="Log Out" sx={{ opacity: open ? 1 : 0, display : open ? 'block' : 'none'}} />
+                  </ListItemButton>
+            </ListItem>
+          </List>
+        </Box>
         </List>
       </Drawer>
       <Box sx={{flexGrow : 1 , padding:  open ? "1rem 1rem 1rem 1rem" : "1rem 1rem 1rem 5rem"  }}>
