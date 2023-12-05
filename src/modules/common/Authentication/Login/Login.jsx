@@ -59,8 +59,7 @@ export default function SignIn() {
         direction="column"
         
       >
-        <Grid className= {styles.imageItem} item
-        >
+        <Grid className= {styles.imageItem} item>
           <img src={LOGO} alt="logo" />
         </Grid>
         <Grid item xs={12} sm={6} md={4}>

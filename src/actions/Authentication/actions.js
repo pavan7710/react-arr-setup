@@ -40,3 +40,22 @@ export const forgot_password = (data , callback) => async ( dispatch ) => {
         }
     )
 }
+
+export const reset_password = (data , callback) => async (dispatch) => {
+    dispatch({
+        type : types.RESET_PASSWORD
+    })
+
+    await api.post('/user/password/reset/send/verification' , data).then(
+        res => {
+            callback(res)
+            dispatch({
+                type : types.SUCCESS_RESET_PASSWORD,
+                payload : res.data
+            })
+        },
+        error => {
+            callback(error)
+        }
+    )
+} 

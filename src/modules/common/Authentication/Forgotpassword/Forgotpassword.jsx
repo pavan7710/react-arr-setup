@@ -13,6 +13,7 @@ import * as Yup from "yup";
 import { useDispatch , useSelector } from 'react-redux'
 import { forgot_password } from 'src/actions/Authentication/actions'
 import LoadingButton from '@mui/lab/LoadingButton';
+import { toast } from 'react-toastify'
 
 const forgotSchema = Yup.object().shape({
   email: emailValidation,
@@ -25,10 +26,12 @@ export default function SignIn() {
   const dispatch = useDispatch()
   const handleSubmit = (values , actions) => {
       dispatch( forgot_password(values , (res) => {
-        if(res.status === 200){
+        if(res.status === 201){
           navigate('/confirmpassword')
+          toast.success(res.data.message , {
+            position: toast.POSITION.TOP_RIGHT
+          } )
         }else{
-
         }
       } ))
   };

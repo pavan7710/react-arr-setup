@@ -16,16 +16,20 @@ import * as Yup from "yup";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import styles from "./resetpassword.module.scss";
-import { passwordValidationSchema } from "src/utlis/RFvalidation";
+import { passwordValidationSchema , emailValidation } from "src/utlis/RFvalidation";
+import {  Link } from 'react-router-dom'
+import { LOGO , CROSS  } from 'src/assests/index'
+import LoadingButton from '@mui/lab/LoadingButton';
 
 const passwordSchema = Yup.object().shape({
+  email : emailValidation,
   password: passwordValidationSchema,
   confirmpassword: Yup.string()
     .oneOf([Yup.ref("password"), null], "Passwords must match")
     .required("Required"),
 });
 
-export default function SignIn() {
+export default function Resetpassword() {
   const navigate = useNavigate();
   const handleSubmit = (values, actions, isValid) => {
     
@@ -37,109 +41,186 @@ export default function SignIn() {
   return (
     <React.Fragment>
       <Grid
-        className={styles.root}
         container
         justifyContent="center"
-        alignItems="center"
         direction="column"
+        sx={{
+          minHeight: "100vh",
+        }}
       >
         <Grid item>
-          <img src={logo} alt="logo" />
+          <Grid container justifyContent="center">
+            <Grid item xs={12} sm={6} md={4} sx={{}}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <img src={LOGO} alt="logo" />
+              </Box>
+            </Grid>
+          </Grid>
         </Grid>
-        <Grid className={styles.resetpassword} item xs={12} sm={6} md={4}>
-          <p>Reset Password </p>
+
+        <Grid className={styles.passwordforgot} item>
+          <p className={styles.textforgot}>Reset Password ?</p>
         </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <Formik
-            initialValues={{ password: "", confirmpassword: "" }}
-            validationSchema={passwordSchema}
-            onSubmit={handleSubmit}
-          >
-            {(props) => {
-              return (
-                <Form>
-                  <FormControl
-                    sx={{
-                      marginBottom: "2.5rem",
-                    }}
-                    fullWidth
-                  >
-                    <OutlinedInput
-                      type="password"
-                      name="password"
-                      error={props.touched.password && props.errors.password}
-                      placeholder="Password"
-                      fullWidth={true}
-                      id="password"
-                      aria-describedby="outlined-password"
-                      onChange={props.handleChange}
-                      value={props.values.password}
-                      onBlur={props.handleBlur}
-                    />
-                    <FormHelperText id="outlined-weight-helper-text">
-                      {props.touched.password && props.errors.password}
-                    </FormHelperText>
-                  </FormControl>
 
-                  <FormControl
-                    sx={{
-                      marginBottom: "2.5rem",
-                    }}
-                    fullWidth
-                  >
-                    <OutlinedInput
-                      type={showPassword ? "text" : "password"}
-                      name="confirmpassword"
-                      placeholder="Confirm Password"
-                      fullWidth={true}
-                      id="confirmpassword"
-                      aria-describedby="outlined-password"
-                      value={props.values.confirmpassword}
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      endAdornment={
-                        <InputAdornment position="end">
-                          <IconButton
-                            aria-label="toggle password visibility"
-                            onClick={handleTogglePasswordVisibility}
-                            edge="end"
-                          >
-                            {showPassword ? (
-                              <VisibilityIcon />
-                            ) : (
-                              <VisibilityOffIcon />
-                            )}
-                          </IconButton>
-                        </InputAdornment>
-                      }
-                      error={
-                        props.touched.confirmpassword &&
-                        props.errors.confirmpassword
-                      }
-                    />
-                    <FormHelperText id="outlined-weight-helper-text">
-                      {props.touched.confirmpassword &&
-                        props.errors.confirmpassword}
-                    </FormHelperText>
-                  </FormControl>
-
-                  <Box className={styles.buttonreset}>
-                    <Button
-                      onClick={handleSubmit}
-                      type="submit"
-                      variant="contained"
-                      sx={{
-                        py: 2,
-                        px: 12,
-                      }}
-                    >
-                      Reset Password
-                    </Button>
-                  </Box>
-                </Form>
-              );
+        <Grid item>
+          <Grid
+            container
+            justifyContent="center"
+            alignItems="center"
+            sx={{
+              mx: "auto",
             }}
-          </Formik>
+          >
+            <Grid item xs={12} sm={6} md={4}>
+              <Formik
+                initialValues={{ email: "" , password : "" , confirmpassword : ""  }}
+                onSubmit={handleSubmit}
+                validationSchema={passwordSchema}
+              >
+                {(props) => {
+                  return (
+                    <Form>
+                      <FormControl
+                        fullWidth
+                        sx={{
+                          marginBottom: "1.5rem",
+                        }}
+                      >
+                        <OutlinedInput
+                          type="email"
+                          name="email"
+                          error={props.touched.email && props.errors.email}
+                          placeholder="Email ID"
+                          fullWidth
+                          id="email"
+                          onChange={props.handleChange}
+                          aria-describedby="outlined-email"
+                          value={props.values.email}
+                          onBlur={props.handleBlur}
+                        />
+
+                      {props.touched.email && props.errors.email ? (
+                      <div className={styles.rooterror}>
+                        <p className={styles.helpertextemailpassword}>
+                          {props.errors.email}
+                        </p>
+                        <span className="questionmark">
+                          <img src={CROSS} alt="cross" />
+                        </span>
+                      </div>
+                    ) : null}
+                     
+                      </FormControl>
+
+                      <FormControl
+                        fullWidth
+                        sx={{
+                          marginBottom: "1.5rem",
+                        }}
+                      >
+                        <OutlinedInput
+                          type="password"
+                          name="password"
+                          error={props.touched.password && props.errors.password}
+                          placeholder="Password"
+                          fullWidth
+                          id="password"
+                          onChange={props.handleChange}
+                          aria-describedby="outlined-password"
+                          value={props.values.password}
+                          onBlur={props.handleBlur}
+                        />
+
+                      {props.touched.password && props.errors.password ? (
+                      <div className={styles.rooterror}>
+                        <p className={styles.helpertextemailpassword}>
+                          {props.errors.password}
+                        </p>
+                        <span className="questionmark">
+                          <img src={CROSS} alt="cross" />
+                        </span>
+                      </div>
+                    ) : null}
+                     
+                      </FormControl>
+
+                      <FormControl
+                        fullWidth
+                        sx={{
+                          marginBottom: "1.5rem",
+                        }}
+                      >
+                        <OutlinedInput
+                          type="confirmpassword"
+                          name="confirmpassword"
+                          error={props.touched.confirmpassword && props.errors.confirmpassword}
+                          placeholder="Confirm Password"
+                          fullWidth
+                          id="confirmpassword"
+                          onChange={props.handleChange}
+                          aria-describedby="outlined-confirmpassword"
+                          value={props.values.confirmpassword}
+                          onBlur={props.handleBlur}
+                        />
+
+                      {props.touched.confirmpassword && props.errors.confirmpassword ? (
+                      <div className={styles.rooterror}>
+                        <p className={styles.helpertextemailpassword}>
+                          {props.errors.confirmpassword}
+                        </p>
+                        <span className="questionmark">
+                          <img src={CROSS} alt="cross" />
+                        </span>
+                      </div>
+                    ) : null}
+                     
+                      </FormControl>
+
+
+                      <Box
+                        sx={{
+                          display: "flex",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <LoadingButton
+                          
+                          type="submit"
+                          variant="contained"
+                          sx={{
+                            py: 2,
+                            px: 8,
+                          }}
+                        >
+                          Request Password reset
+                        </LoadingButton>
+                      </Box>
+
+                      <Box
+                        sx={{
+                          marginBottom: "2.5rem",
+                          display: "flex",
+                          justifyContent: "center",
+                          mr: "1.5rem",
+                          mt: 5,
+                          color: "#0075FF",
+                        }}
+                      >
+                        <Link to="/login" underline="hover" variant="subtitle2">
+                          Back to sign-in
+                        </Link>
+                      </Box>
+                    </Form>
+                  );
+                }}
+              </Formik>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </React.Fragment>
