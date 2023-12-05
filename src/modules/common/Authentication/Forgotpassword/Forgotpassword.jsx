@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useState} from "react";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import { ReuseOutlinedInput as OutlinedInput } from "src/Components/ReuseOutlinedInput";
@@ -27,11 +27,14 @@ export default function SignIn() {
   const handleSubmit = (values , actions) => {
       dispatch( forgot_password(values , (res) => {
         if(res.status === 201){
-          navigate('/resetPassword')
+          navigate('/success')
           toast.success(res.data.message , {
             position: toast.POSITION.TOP_RIGHT
           } )
         }else{
+          toast.error( "Error", {
+            position: toast.POSITION.TOP_RIGHT
+          } )
         }
       } ))
   };

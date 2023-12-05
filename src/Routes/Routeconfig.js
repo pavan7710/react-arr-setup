@@ -6,12 +6,15 @@ import Dashboard from "../modules/common/dashboard/Dashboard";
 import Forgotpassword from "../modules/common/Authentication/Forgotpassword/Forgotpassword";
 import ResetPassword from "../modules/common/Authentication/ResetPassword/ResetPassword";
 import UpdatedSuccessfully from "../modules/common/Authentication/UpdatedSuccessfully/Updated";
+import Success from "../modules/common/Authentication/SuccessScreen/Success"
+
 
 export const PublicRoutes = [
   { path: "/", component: Login, layout: "null" },
   { path: "/login", component: Login, layout: "null" },
   { path: "/forgotpassword", component: Forgotpassword, layout: "null" },
   { path: "/resetPassword", component: ResetPassword, layout: "null" },
+  { path: "/success", component: Success, layout: "null" },
   {
     path: "/updatedsuccessfully",
     component: UpdatedSuccessfully,
