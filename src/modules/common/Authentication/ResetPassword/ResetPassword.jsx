@@ -20,19 +20,34 @@ import { passwordValidationSchema , emailValidation } from "src/utlis/RFvalidati
 import {  Link } from 'react-router-dom'
 import { LOGO , CROSS  } from 'src/assests/index'
 import LoadingButton from '@mui/lab/LoadingButton';
+import { useSelector , useDispatch } from 'react-redux'
+import { reset_password } from 'src/actions/Authentication/actions'
+import { toast } from 'react-toastify'
 
 const passwordSchema = Yup.object().shape({
   email : emailValidation,
-  password: passwordValidationSchema,
-  confirmpassword: Yup.string()
-    .oneOf([Yup.ref("password"), null], "Passwords must match")
+  new_password: passwordValidationSchema,
+  confirm_password: Yup.string()
+    .oneOf([Yup.ref("new_password"), null], "Passwords must match")
     .required("Required"),
 });
 
 export default function Resetpassword() {
   const navigate = useNavigate();
-  const handleSubmit = (values, actions, isValid) => {
-    
+  const dispatch = useDispatch()
+
+  const resetData = useSelector((state) => state.authReducer)
+
+  const handleSubmit = (values, actions) => {
+    dispatch( reset_password(values , (res) => {
+      if(res.status === 200){
+        navigate('/updatedsuccessfully')
+        toast.success(res.data.message , {
+          position: toast.POSITION.TOP_RIGHT
+        } )
+      }else{
+      }
+    } ))
   };
   const [showPassword, setshowPassword] = useState(false);
   const handleTogglePasswordVisibility = () => {
@@ -78,7 +93,7 @@ export default function Resetpassword() {
           >
             <Grid item xs={12} sm={6} md={4}>
               <Formik
-                initialValues={{ email: "" , password : "" , confirmpassword : ""  }}
+                initialValues={{ email: "" , new_password : "" , confirm_password : ""  }}
                 onSubmit={handleSubmit}
                 validationSchema={passwordSchema}
               >
@@ -125,21 +140,21 @@ export default function Resetpassword() {
                       >
                         <OutlinedInput
                           type="password"
-                          name="password"
-                          error={props.touched.password && props.errors.password}
-                          placeholder="Password"
+                          name="new_password"
+                          error={props.touched.new_password && props.errors.new_password}
+                          placeholder="new_password"
                           fullWidth
-                          id="password"
+                          id="new_password"
                           onChange={props.handleChange}
-                          aria-describedby="outlined-password"
-                          value={props.values.password}
+                          aria-describedby="outlined-new_password"
+                          value={props.values.new_password}
                           onBlur={props.handleBlur}
                         />
 
-                      {props.touched.password && props.errors.password ? (
+                      {props.touched.new_password && props.errors.new_password ? (
                       <div className={styles.rooterror}>
                         <p className={styles.helpertextemailpassword}>
-                          {props.errors.password}
+                          {props.errors.new_password}
                         </p>
                         <span className="questionmark">
                           <img src={CROSS} alt="cross" />
@@ -156,22 +171,22 @@ export default function Resetpassword() {
                         }}
                       >
                         <OutlinedInput
-                          type="confirmpassword"
-                          name="confirmpassword"
-                          error={props.touched.confirmpassword && props.errors.confirmpassword}
+                          type="password"
+                          name="confirm_password"
+                          error={props.touched.confirm_password && props.errors.confirm_password}
                           placeholder="Confirm Password"
                           fullWidth
-                          id="confirmpassword"
+                          id="confirm_password"
                           onChange={props.handleChange}
-                          aria-describedby="outlined-confirmpassword"
-                          value={props.values.confirmpassword}
+                          aria-describedby="outlined-confirm_password"
+                          value={props.values.confirm_password}
                           onBlur={props.handleBlur}
                         />
 
-                      {props.touched.confirmpassword && props.errors.confirmpassword ? (
+                      {props.touched.confirm_password && props.errors.confirm_password ? (
                       <div className={styles.rooterror}>
                         <p className={styles.helpertextemailpassword}>
-                          {props.errors.confirmpassword}
+                          {props.errors.confirm_password}
                         </p>
                         <span className="questionmark">
                           <img src={CROSS} alt="cross" />
@@ -189,7 +204,7 @@ export default function Resetpassword() {
                         }}
                       >
                         <LoadingButton
-                          
+                          loading = {resetData.isLoading}
                           type="submit"
                           variant="contained"
                           sx={{
@@ -197,7 +212,7 @@ export default function Resetpassword() {
                             px: 8,
                           }}
                         >
-                          Request Password reset
+                          Reset Password
                         </LoadingButton>
                       </Box>
 

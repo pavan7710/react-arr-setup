@@ -41,6 +41,16 @@ export const authReducer = (state = initialState , action) => {
                 ...state,
                 isLoading : false
             }
+        case types.RESET_PASSWORD :
+            return {
+                ...state,
+                isLoading : true
+            }
+        case types.SUCCESS_RESET_PASSWORD : 
+            return {
+                ...state,
+                isLoading : false
+            }
         default:
             return state
     }

@@ -27,7 +27,7 @@ export default function SignIn() {
   const handleSubmit = (values , actions) => {
       dispatch( forgot_password(values , (res) => {
         if(res.status === 201){
-          navigate('/confirmpassword')
+          navigate('/resetPassword')
           toast.success(res.data.message , {
             position: toast.POSITION.TOP_RIGHT
           } )
