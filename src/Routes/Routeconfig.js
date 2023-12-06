@@ -1,44 +1,44 @@
 import Login from "../modules/common/Authentication/Login/Login";
 import Admin from "../modules/admin/admin";
 import Salesmanager from "../modules/salesmanager/Salesmanager";
-import HomeLayout from "../Layout/HomeLayout";
 import Dashboard from "../modules/common/dashboard/Dashboard";
 import Forgotpassword from "../modules/common/Authentication/Forgotpassword/Forgotpassword";
 import ResetPassword from "../modules/common/Authentication/ResetPassword/ResetPassword";
 import UpdatedSuccessfully from "../modules/common/Authentication/UpdatedSuccessfully/Updated";
 import Success from "../modules/common/Authentication/SuccessScreen/Success"
+import PageNotFound from "src/PageNotFound/PageNotFound";
 
 
 export const PublicRoutes = [
-  { path: "/", component: Login, layout: "null" },
-  { path: "/login", component: Login, layout: "null" },
-  { path: "/forgotpassword", component: Forgotpassword, layout: "null" },
-  { path: "/resetPassword", component: ResetPassword, layout: "null" },
-  { path: "/success", component: Success, layout: "null" },
+  { path: "/login", component: <Login/> },
+  { path: "/forgotpassword", component: <Forgotpassword/> },
+  { path: "/resetPassword", component: <ResetPassword/> },
+  { path: "/success", component: <Success/> },
   {
     path: "/updatedsuccessfully",
-    component: UpdatedSuccessfully,
-    layout: "null",
+    component: <UpdatedSuccessfully/>,
   },
 ];
 
 export const PrivateRoutes = [
   {
     path: "/admin",
-    component: Admin,
-    layout: HomeLayout,
+    component: <Admin/>,
     roles: ["admin"],
   },
   {
     path: "/salesmanager",
-    component: Salesmanager,
-    layout: HomeLayout,
+    component: <Salesmanager/>,
     roles: ["sales_manager"],
   },
   {
     path: "/dashboard",
-    component: Dashboard,
-    layout: HomeLayout,
+    component: <Dashboard/>,
+    roles: ["admin", "sales_manager"],
+  },
+  {
+    path: "*",
+    component: <PageNotFound/>,
     roles: ["admin", "sales_manager"],
   },
 ];

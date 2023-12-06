@@ -1,9 +1,8 @@
 import React from "react";
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Routes, Route, Outlet , Navigate } from "react-router-dom";
 import { PublicRoutes, PrivateRoutes } from "./Routeconfig";
 import PageNotFound from "../PageNotFound/PageNotFound";
 import Sidenav from "src/Layout/Sidenav";
-import Dashboard from "src/modules/common/dashboard/Dashboard";
 
 const AppRoutes = () => {
   const getPublicRoutes = () => {
@@ -12,7 +11,7 @@ const AppRoutes = () => {
         <Route
           key={route.path}
           path={route.path}
-          element={<route.component />}
+          element={route.component}
         ></Route>
       );
     });
@@ -40,34 +39,16 @@ const AppRoutes = () => {
   return (
     <Routes>
       {getPublicRoutes()}
-      {PrivateRoutes.map((route) => {
-        return (
-          // <Route
-          //   key={route.path}
-          //   element={<RoleAuth allowedRoles={route.roles} />}
-          // >
-          //   <Route
-          //     path={route.path}
-          //     element={
-          //       route?.layout ? (
-          //         <RouteWithLayout
-          //           layout={route.layout}
-          //           component={route.component}
-          //         />
-          //       ) : (
-          //         <route.component />
-          //       )
-          //     }
-          //   ></Route>
-          // </Route>
-
-          <Route element={<Sidenav/>}>
-            <Route  path="/dashboard" element={<Dashboard />} />
-          </Route>
-
-
-        );
-      })}
+      <Route element={<Sidenav/>}>
+        {PrivateRoutes.map( (route) => {
+          return (
+            <Route key={route.path} element={<RoleAuth allowedRoles={route.roles}/> }>
+                <Route  path={route.path} element={route.component} />
+                <Route  path= {route.path} element={route.component} />
+            </Route>
+          )
+        } )}
+      </Route>
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
