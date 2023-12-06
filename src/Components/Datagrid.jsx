@@ -33,6 +33,8 @@ const DataTable = ({rows, columns , sx ,hideFooterPagination, ...rest }) => {
 
           ".MuiDataGrid-columnHeaders" : {
             // borderBottom: '1px solid #f2f4f7',
+            borderBottom : "none",
+            borderLeft : "none",
             backgroundColor: "#5AB95D",
             color: "#FFF",
             fontSize: 12,
@@ -40,6 +42,20 @@ const DataTable = ({rows, columns , sx ,hideFooterPagination, ...rest }) => {
             letterSpacing: 0.5,
             textTransform: 'uppercase',
           },
+          
+          '&>.MuiDataGrid-main': {
+            '&>.MuiDataGrid-columnHeaders': {
+              borderBottom: 'none',
+              borderLeft : "none",
+              borderRight : 'none'
+            },
+          },
+          
+            '& div div div div >.MuiDataGrid-cell': {
+              borderBottom: 'none',
+              borderLeft : 'none',
+              borderRight : 'none'
+            },
 
           ".MuiDataGrid-columnHeaderTitle": {
             fontWeight : 'bold',
@@ -50,7 +66,7 @@ const DataTable = ({rows, columns , sx ,hideFooterPagination, ...rest }) => {
           // },
 
           ".MuiDataGrid-row" : {
-            borderBottom : '2px solid #5AB95D',
+            borderBottom : '1px solid #5AB95D',
             borderLeft : "",
             borderRight : "none"
           },
