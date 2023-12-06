@@ -10,12 +10,12 @@ const UserList = () => {
       }
 
     const columns = [
-        { field: '#', headerName: '#' , width : 100 },
-        { field: 'id', headerName: 'ID' , width : 150 },
-        { field: 'user_name', headerName: 'User Name' ,width : 150 },
-        { field: 'email', headerName: 'Email ID' ,  width : 250   },
-        { field: 'contact', headerName: 'Contact' ,width : 250 },
-        { field: 'role', headerName: 'Role', width : 250  },
+        { field: '#', headerName: '#' , width : 100  , editable: true },
+        { field: 'id', headerName: 'ID' , width : 150 , editable: true },
+        { field: 'user_name', headerName: 'User Name' ,width : 150 , editable: true },
+        { field: 'email', headerName: 'Email ID' ,  width : 250  ,editable: true },
+        { field: 'contact', headerName: 'Contact' ,width : 250 , editable: true},
+        { field: 'role', headerName: 'Role', width : 250 , editable: true },
       ];
       const rows =  [
         {

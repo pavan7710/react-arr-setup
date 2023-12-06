@@ -1,7 +1,5 @@
 import React from 'react'
 import { List , ListItem , ListItemIcon , ListItemText , ListItemButton , Tooltip , Box  } from "@mui/material"
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import LogoutIcon from '@mui/icons-material/Logout';
 import {  useNavigate , useLocation } from 'react-router-dom'
 
@@ -52,7 +50,7 @@ const Navitems = ({open , data}) => {
                     justifyContent: 'center',
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  <img src={ active ?  text.icon_active : text.icon_inactive } alt={text.icons} />
                 </ListItemIcon>
 
 

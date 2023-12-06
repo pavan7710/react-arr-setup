@@ -17,6 +17,12 @@ import USERICON from './other_icons/user.png'
 import FILTERICON from './other_icons/filterr.png'
 import INVITEUSER from './other_icons/inviteuser.png'
 
+import ANALYTICS_ATIVE from './sidenavIcons/analytic-active.svg'
+import ANA_INACTIVE from './sidenavIcons/analytics-inactive.svg'
+import PROJECT_ACTIVE from './sidenavIcons/project-active.svg'
+import PROJECT_INACTIVE from './sidenavIcons/project-inactive.svg'
+import USER_ACTIVE from './sidenavIcons/user-active.svg'
+import USER_INACTIVE from './sidenavIcons/user-inactive.svg'
 export {
     LOGO,
     CROSS,
@@ -28,5 +34,11 @@ export {
     CONTACTADDED,
     USERICON,
     FILTERICON,
-    INVITEUSER
+    INVITEUSER,
+    ANALYTICS_ATIVE,
+    ANA_INACTIVE,
+    PROJECT_ACTIVE,
+    PROJECT_INACTIVE,
+    USER_ACTIVE,
+    USER_INACTIVE
 }
