@@ -72,8 +72,6 @@ export default function Sidenav() {
       }
     }
   }
-
-
   const theme = useTheme();
   const navData = useNavData();
   const [open, setOpen] = React.useState(true);
