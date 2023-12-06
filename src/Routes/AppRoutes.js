@@ -38,6 +38,7 @@ const AppRoutes = () => {
 
   return (
     <Routes>
+      <Route  path="/"   element={<Navigate to="/login"/>}  />
       {getPublicRoutes()}
       <Route element={<Sidenav/>}>
         {PrivateRoutes.map( (route) => {

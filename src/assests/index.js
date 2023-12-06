@@ -14,6 +14,8 @@ import CONTACT  from './other_icons/contact 1.png'
 import CONTACTADDED from './other_icons/contact_added.png'
 import CLOSE from './other_icons/cross (2) 1.png'
 import USERICON from './other_icons/user.png'
+import FILTERICON from './other_icons/filterr.png'
+import INVITEUSER from './other_icons/inviteuser.png'
 
 export {
     LOGO,
@@ -24,5 +26,7 @@ export {
     CONTACT,
     CLOSE,
     CONTACTADDED,
-    USERICON
+    USERICON,
+    FILTERICON,
+    INVITEUSER
 }

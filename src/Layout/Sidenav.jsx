@@ -109,7 +109,7 @@ export default function Sidenav() {
           <Divider/>
         <Navitems data={navData} open={open} />
       </Drawer>
-      <Box sx={{flexGrow : 1 , padding:  open ? "1rem 1rem 1rem 2rem" : "1rem 1rem 1rem 5.5rem"  }}>
+      <Box sx={{flexGrow : 1 , padding:  open ? "1rem 1rem 1rem 2rem" : "1rem 1rem 1rem 2rem"  }}>
             <Outlet/>
       </Box>
       </Box>
