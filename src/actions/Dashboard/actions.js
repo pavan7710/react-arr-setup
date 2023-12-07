@@ -18,11 +18,15 @@ export const create_user = (data , callback) => async ( dispatch ) => {
         }
     )
 }
-export const list_user = () => async ( dispatch ) => {
+export const list_user = (sort_by , sort_order , search , limit , offset) => async ( dispatch ) => {
     dispatch({
         type : types.LIST_USER
     })
-    await api.get('/user/user/list/with/search?search=&limit=10&offset=0').then(
+
+
+    // /user/user/list/search/and/sort?sort_by=&sort_order=&search=&limit=10&offset=0
+
+    await api.get(`/user/user/list/search/and/sort?sort_by=${sort_by}&sort_order=${sort_order}&search=${search}&limit=${limit}&offset=${offset}`).then(
         res => {
             dispatch({
                 type : types.SUCCESS_LIST_USER,

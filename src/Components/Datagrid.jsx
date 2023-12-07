@@ -2,7 +2,6 @@ import React from 'react'
 import { DataGrid } from '@mui/x-data-grid';
 
 const DataTable = ({rows, columns , sx ,hideFooterPagination, ...rest }) => {
-  console.log(rest)
   return (
         <DataGrid
         sx={{

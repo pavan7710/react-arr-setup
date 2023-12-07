@@ -8,11 +8,9 @@ const Navitems = ({open , data}) => {
     const location = useLocation()
     const {pathname} = location
 
-    console.log(pathname.split('/'))
   
     const heading = pathname.split('/')[1]
   
-    console.log(heading , 'heading')
 
   return (
      <List sx={{

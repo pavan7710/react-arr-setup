@@ -59,10 +59,10 @@ export default function SignIn() {
         direction="column"
         
       >
-        <Grid className= {styles.imageItem} item>
+        <Grid className= {styles.imageItem}>
           <img src={LOGO} alt="logo" />
         </Grid>
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid  xs={12} sm={6} md={4}>
           <Formik
             initialValues={{ email: "", password: "" }}
             validationSchema={loginSchema}

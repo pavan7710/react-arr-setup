@@ -3,19 +3,13 @@ import DataTable from 'src/Components/Datagrid'
 import { useSelector } from 'react-redux'
 
 const UserList = () => {
-
     const userData = useSelector((state) => state.dashboard )
-
-    console.log(userData)
-
     const userList = userData.users.data
-
     const CustomNoRowsOverlay = () => {
         return (
             <p>No Data Found</p>
         )
       }
-
     const columns = [
         // { field: '#', headerName: '#' , width : 100   },
         { field: 'id', headerName: 'ID' , width : 150  },
@@ -24,9 +18,7 @@ const UserList = () => {
         { field: 'contact', headerName: 'Contact' ,width : 250 },
         { field: 'role', headerName: 'Role', width : 250  },
       ];
-
     const rows = userList?.length > 0 ? userList : []
-     
   return (
     <React.Fragment>
          <DataTable checkboxSelection disableColumnFilter disableColumnMenu

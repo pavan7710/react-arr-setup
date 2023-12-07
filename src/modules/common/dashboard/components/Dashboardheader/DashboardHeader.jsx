@@ -1,13 +1,19 @@
 import React from 'react'
-import { Grid , Box , OutlinedInput  , InputAdornment , IconButton , FormControl , TextField, CssBaseline } from '@mui/material'
-import VisibilityIcon from "@mui/icons-material/Visibility";
+import { Grid , Box , OutlinedInput  , InputAdornment } from '@mui/material'
 import styles from './dashboard.module.scss'
 import SearchIcon from '@mui/icons-material/Search';
 import { FILTERICON } from 'src/assests/index'
+import { useDispatch } from 'react-redux'
+import { list_user } from 'src/actions/Dashboard/actions'
 
 const DashboardHeader = () => {
+  const dispatch = useDispatch()
+  const hitApi = (e) => {
+    if(e.key === 'Enter' ){
+      dispatch(list_user( '' , 'asc' , e.target.value , '10' , '0' ))
+    }
+  }
   return (
-   
     <React.Fragment>
        <Grid sx={{
         mt : 2
@@ -18,12 +24,11 @@ const DashboardHeader = () => {
             User <span className={styles.dashboard} >Dashboard</span>
           </p>
         </Grid>
-
         <Grid sx={{
           display : "flex"
         }} justifyContent="space-between"
         xs={12} md={5}  >
-          <OutlinedInput fullWidth
+          <OutlinedInput onKeyUp={ (e) => hitApi(e) } fullWidth
               placeholder='Search For User'
               sx={{
                 "&.MuiInputBase-root" : {
@@ -49,12 +54,8 @@ const DashboardHeader = () => {
               <img src={FILTERICON} alt='filter' />
             </Box>
         </Grid>
-      
     </Grid>
-       
     </React.Fragment>
-
-
   )
 }
 

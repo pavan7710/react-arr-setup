@@ -8,8 +8,6 @@ import { Select ,MenuItem , OutlinedInput } from '@mui/material'
 const Filterbuttons = () => {
     const theme = useTheme()
 
-    console.log(theme)
-    console.log(theme.palette.primary.main)
 
     const buttonStyles = {
         commonStyles : {
