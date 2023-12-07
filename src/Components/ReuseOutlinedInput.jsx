@@ -3,7 +3,7 @@ import { OutlinedInput } from "@mui/material"
 
  export  const ReuseOutlinedInput = ( {sx , ...rest} ) => {
   return (
-    <OutlinedInput autoComplete='off'  sx={{
+    <OutlinedInput   sx={{
         "&.MuiInputBase-root" : {
           borderRadius : '40px',
           backgroundColor : '#F3F3F3',

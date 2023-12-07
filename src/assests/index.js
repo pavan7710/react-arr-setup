@@ -16,7 +16,11 @@ import CLOSE from './other_icons/cross (2) 1.png'
 import USERICON from './other_icons/user.png'
 import FILTERICON from './other_icons/filterr.png'
 import INVITEUSER from './other_icons/inviteuser.png'
+import SORT from './other_icons/sort.svg'
 
+
+
+/// side nav icons
 import ANALYTICS_ATIVE from './sidenavIcons/analytic-active.svg'
 import ANA_INACTIVE from './sidenavIcons/analytics-inactive.svg'
 import PROJECT_ACTIVE from './sidenavIcons/project-active.svg'
@@ -40,5 +44,6 @@ export {
     PROJECT_ACTIVE,
     PROJECT_INACTIVE,
     USER_ACTIVE,
-    USER_INACTIVE
+    USER_INACTIVE,
+    SORT
 }

@@ -67,6 +67,12 @@ export default function Sidenav() {
     chevLeftRightStyles : {
       backgroundColor : "#686868",
       color : "white",
+      "&.MuiButtonBase-root" : {
+        borderRadius : "unset",
+        borderTopLeftRadius : "17px",
+        borderBottomLeftRadius : "17px",
+        left : "0.5rem"
+      },
       "&.MuiButtonBase-root:hover" : {
           backgroundColor: '#686868',
       }
