@@ -18,3 +18,19 @@ export const create_user = (data , callback) => async ( dispatch ) => {
         }
     )
 }
+export const list_user = () => async ( dispatch ) => {
+    dispatch({
+        type : types.LIST_USER
+    })
+    await api.get('/user/user/list/with/search?search=&limit=10&offset=0').then(
+        res => {
+            dispatch({
+                type : types.SUCCESS_LIST_USER,
+                payload : res.data
+            })
+        },
+        error => {
+            
+        }
+    )
+}

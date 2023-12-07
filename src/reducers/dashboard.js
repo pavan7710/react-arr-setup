@@ -3,6 +3,7 @@ import * as types from 'src/actions/Dashboard/types'
 
 const initialState = {
     isLoading : false,
+    users : {}
 }
 
 export const dashboard = (state = initialState , action) => {
@@ -22,6 +23,18 @@ export const dashboard = (state = initialState , action) => {
             return {
                 ...state,
                 isLoading : false
+            }
+        
+        case types.LIST_USER:
+            return {
+                ...state,
+                isLoading : true
+            }
+        case types.SUCCESS_LIST_USER:
+            return {
+                ...state,
+                isLoading : false,
+                users : payload
             }
         default:
             return state

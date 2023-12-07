@@ -1,2 +1,6 @@
 export const CREATE_USER = "CREATE_USER";
 export const SUCCESS_CREATE_USER = "SUCCESS_CREATE_USER";
+
+export const LIST_USER = "LIST_USER";
+export const SUCCESS_LIST_USER = "SUCCESS_LIST_USER";
+

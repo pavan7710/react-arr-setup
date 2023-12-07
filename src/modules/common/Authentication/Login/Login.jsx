@@ -33,11 +33,11 @@ export default function SignIn() {
     dispatch(login_user(values , (res) => {
       if(res.status === 200){
         navigate('/dashboard')
-        toast.success(res.data.message , {
+        toast.success(res?.data?.message , {
           position: toast.POSITION.TOP_RIGHT
         } )
       }else{
-        toast.error( res.response.data.message , {
+        toast.error( res?.response?.data?.message , {
           position: toast.POSITION.TOP_RIGHT
         } )
       }

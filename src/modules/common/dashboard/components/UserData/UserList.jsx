@@ -1,7 +1,14 @@
 import React from 'react'
 import DataTable from 'src/Components/Datagrid'
+import { useSelector } from 'react-redux'
 
 const UserList = () => {
+
+    const userData = useSelector((state) => state.dashboard )
+
+    console.log(userData)
+
+    const userList = userData.users.data
 
     const CustomNoRowsOverlay = () => {
         return (
@@ -10,42 +17,16 @@ const UserList = () => {
       }
 
     const columns = [
-        { field: '#', headerName: '#' , width : 100  , editable: true },
-        { field: 'id', headerName: 'ID' , width : 150 , editable: true },
-        { field: 'user_name', headerName: 'User Name' ,width : 150 , editable: true },
-        { field: 'email', headerName: 'Email ID' ,  width : 250  ,editable: true },
-        { field: 'contact', headerName: 'Contact' ,width : 250 , editable: true},
-        { field: 'role', headerName: 'Role', width : 250 , editable: true },
+        // { field: '#', headerName: '#' , width : 100   },
+        { field: 'id', headerName: 'ID' , width : 150  },
+        { field: 'full_name', headerName: 'User Name' ,width : 190  },
+        { field: 'email', headerName: 'Email ID' ,  width : 250  },
+        { field: 'contact', headerName: 'Contact' ,width : 250 },
+        { field: 'role', headerName: 'Role', width : 250  },
       ];
-      const rows =  [
-        {
-            "#" : "1",
-            "id" : "2",
-            "user_name" : "pavan",
-            "email" : "pavan@gmail.com",
-            "contact" : "9700657710",
-            "role" : "admin"
 
-        },
-        {
-            "#" : "2",
-            "id" : "3",
-            "user_name" : "pavan",
-            "email" : "pavan@gmail.com",
-            "contact" : "9700657710",
-            "role" : "admin"
-
-        },
-        {
-            "#" : "3",
-            "id" : "4",
-            "user_name" : "pavan",
-            "email" : "pavan@gmail.com",
-            "contact" : "9700657710",
-            "role" : "admin"
-
-        }
-      ]
+    const rows = userList
+     
   return (
     <React.Fragment>
          <DataTable checkboxSelection disableColumnFilter disableColumnMenu
