@@ -25,7 +25,7 @@ const UserList = () => {
         { field: 'role', headerName: 'Role', width : 250  },
       ];
 
-    const rows = userList
+    const rows = userList?.length > 0 ? userList : []
      
   return (
     <React.Fragment>
