@@ -6,10 +6,12 @@ import  styles from './filter.module.scss'
 import { Select ,MenuItem , OutlinedInput } from '@mui/material'
 import Inviteuser from '../Inviteuser'
 import { useDispatch } from 'react-redux'
-import { download_file } from 'src/actions/Dashboard/actions'
+import { download_file , list_user } from 'src/actions/Dashboard/actions'
 
 const Filterbuttons = () => {
     const theme = useTheme()
+
+
 
     const dispatch = useDispatch()
 
@@ -39,11 +41,8 @@ const Filterbuttons = () => {
         console.log(type)
         dispatch(download_file( type , (res) => {
             if(res.status === 200){
-                console.log(res.data)
-                const pdfContent =  res.data;
-                const xlsContent = res.data
-                // xlsx
                 if(type === 'pdf'){
+                    const pdfContent =  res.data;
                     const blob = new Blob([pdfContent], { type: 'application/pdf' });
                     const link = document.createElement('a');
                     link.href = window.URL.createObjectURL(blob);
@@ -52,21 +51,29 @@ const Filterbuttons = () => {
                     link.click();
                     document.body.removeChild(link);
                 }else {
-                    const blob = new Blob([xlsContent], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+                    const binaryData = res.data ;
+
+                    const blob = new Blob([binaryData], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+
                     const link = document.createElement('a');
+
                     link.href = window.URL.createObjectURL(blob);
-                    link.download = 'ciao_green.xlsx';
+                    link.download = 'yourFileName.xlsx';
+
                     document.body.appendChild(link);
                     link.click();
                     document.body.removeChild(link);
                 }
-
                
 
             }else{
 
             }
         }  ))
+    }
+
+    const handleChange = (e) => {
+        dispatch( list_user( 'first_name' , e.target.value ,'', '10' , '' ) )
     }
   return (
     <React.Fragment>
@@ -75,8 +82,7 @@ const Filterbuttons = () => {
             <Grid sx={{
                 display : "flex",   
             }} xs={6} md={3}>
-                <p className={styles.items}>(2 items selected)</p>
-                <p className={styles.exported}  >Export Selected</p>
+                {/* <p className={styles.exported}  >Export Selected</p> */}
 
                 <p onClick={ () => downloadfile('pdf')} >Export PDF</p>
 
@@ -105,12 +111,13 @@ const Filterbuttons = () => {
                     defaultValue=''
                     input={<OutlinedInput />}
                     name = "role"
+                    onChange = {(e) => handleChange(e)}
                 >
-                    <MenuItem  value='' disabled  >
+                    <MenuItem selected value='' disabled  >
                         Sort
                     </MenuItem>
-                    <MenuItem value = 'ascending' >Ascending</MenuItem>
-                    <MenuItem value = 'descending' >Descending</MenuItem>
+                    <MenuItem value = 'asc' >Ascending</MenuItem>
+                    <MenuItem value = 'desc' >Descending</MenuItem>
                 </Select>
                 <Button sx={ buttonStyles.commonStyles } variant='contained' >All Users</Button>
                 <Button sx={ buttonStyles.commonStyles } variant='contained' >Customer</Button>

@@ -19,7 +19,9 @@ const DashboardHeader = () => {
         mt : 2
        }}  className={styles.rootdashboard} container justifyContent="space-between">
 
-        <Grid xs={12} md={5} >
+        <Grid sx={{
+          alignSelf : "center"
+        }} xs={12} md={5} >
             <p className={styles.user} >
             User <span className={styles.dashboard} >Dashboard</span>
           </p>
@@ -32,7 +34,7 @@ const DashboardHeader = () => {
               placeholder='Search For User'
               sx={{
                 "&.MuiInputBase-root" : {
-                  height : "3rem",
+                  height : "2.5rem",
                   alignSelf : "center",
                   borderRadius : "10px",
                   mx : 1

@@ -9,7 +9,7 @@ import { list_user } from 'src/actions/Dashboard/actions'
 const Dashboard = () => {
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(list_user('' , 'asc' , '' , '10' , '0' ))
+        dispatch(list_user('' , '' , '' , '10' , '0' ))
     },[])
    return (
     <React.Fragment>
@@ -20,7 +20,7 @@ const Dashboard = () => {
             </Box>
 
             <Box sx={{
-                mb : 5
+                mb : 3
             }}>
                 <FilterButtons/>
             </Box>

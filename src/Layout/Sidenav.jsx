@@ -71,10 +71,15 @@ export default function Sidenav() {
         borderRadius : "unset",
         borderTopLeftRadius : "17px",
         borderBottomLeftRadius : "17px",
-        left : "0.5rem"
+        left : "0.5rem",
       },
       "&.MuiButtonBase-root:hover" : {
           backgroundColor: '#686868',
+      },
+    },
+    icons : {
+      "&.MuiSvgIcon-root" : {
+        fontSize : "2rem"
       }
     }
   }
@@ -108,7 +113,7 @@ export default function Sidenav() {
 }}  variant="permanent" open={open}>
         <DrawerHeader>
           <IconButton sx={sxstyles.chevLeftRightStyles} onClick={handleDrawerClose}>
-            { open ? <ChevronLeftIcon />  : <ChevronRightIcon /> }
+            { open ? <ChevronLeftIcon   />  : <ChevronRightIcon /> }
           </IconButton>
         </DrawerHeader>
           <Profile open={open} />        

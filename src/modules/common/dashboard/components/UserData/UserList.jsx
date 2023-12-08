@@ -73,7 +73,7 @@ const UserList = () => {
             paginationModel: { pageSize: 10, page: 0 },
           },
         }}
-        checkboxSelection disableColumnFilter disableColumnMenu
+         disableColumnFilter disableColumnMenu
         hideFooterPagination={false} slots={{
           noRowsOverlay: CustomNoRowsOverlay,
         }}
