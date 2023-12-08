@@ -22,10 +22,6 @@ export const list_user = (sort_by , sort_order , search , limit , offset) => asy
     dispatch({
         type : types.LIST_USER
     })
-
-
-    // /user/user/list/search/and/sort?sort_by=&sort_order=&search=&limit=10&offset=0
-
     await api.get(`/user/user/list/search/and/sort?sort_by=${sort_by}&sort_order=${sort_order}&search=${search}&limit=${limit}&offset=${offset}`).then(
         res => {
             dispatch({
@@ -37,4 +33,23 @@ export const list_user = (sort_by , sort_order , search , limit , offset) => asy
             
         }
     )
+}
+
+export const download_file = (format , callback) => async (dispatch) => {
+    dispatch({
+        type : types.DOWNLOAD_FILE_PDF_EXCEL
+    })
+    await api.get(`/user/export/user/list?export_format=${format}`).then(
+        res => {
+            callback(res)
+            dispatch({
+                type : types.SUCCESS_FILE_DOWNLOAD,
+                payload : res.data
+            })
+        },
+        error => {
+            callback(error)
+        }
+    )
+
 }

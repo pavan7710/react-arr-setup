@@ -38,11 +38,7 @@ const UserList = () => {
       ];
 
       const handlePageChange = (params) => {
-        console.log('pavan' , params)
-
-        dispatch( list_user( '' , '' , '' , '', params.page * 10 ) )
-
-
+        dispatch( list_user( '' , '' , '' , '10', params.page * 10 ) )
       }
 
       const dummyData = [
@@ -81,11 +77,9 @@ const UserList = () => {
         hideFooterPagination={false} slots={{
           noRowsOverlay: CustomNoRowsOverlay,
         }}
-        // paginationModel={paginationModel}
         paginationMode="server"
         onPaginationModelChange={handlePageChange}
         rowCount={ userData?.users?.count }
-
         autoHeight  rows={rows} columns={columns} disableRowSelectionOnClick />
     </React.Fragment>    
   )

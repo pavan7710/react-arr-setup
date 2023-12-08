@@ -1,14 +1,17 @@
 import React from 'react'
 import { Button, useTheme } from '@mui/material'
 import { Grid , Box } from "@mui/material"
-import { INVITEUSER , SORT } from 'src/assests/index'
+import {  SORT } from 'src/assests/index'
 import  styles from './filter.module.scss'
 import { Select ,MenuItem , OutlinedInput } from '@mui/material'
 import Inviteuser from '../Inviteuser'
+import { useDispatch } from 'react-redux'
+import { download_file } from 'src/actions/Dashboard/actions'
 
 const Filterbuttons = () => {
     const theme = useTheme()
 
+    const dispatch = useDispatch()
 
     const buttonStyles = {
         commonStyles : {
@@ -32,6 +35,39 @@ const Filterbuttons = () => {
         }
     }
 
+    const downloadfile = (type) => {
+        console.log(type)
+        dispatch(download_file( type , (res) => {
+            if(res.status === 200){
+                console.log(res.data)
+                const pdfContent =  res.data;
+                const xlsContent = res.data
+                // xlsx
+                if(type === 'pdf'){
+                    const blob = new Blob([pdfContent], { type: 'application/pdf' });
+                    const link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = 'ciao_green.pdf';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }else {
+                    const blob = new Blob([xlsContent], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+                    const link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = 'ciao_green.xlsx';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }
+
+               
+
+            }else{
+
+            }
+        }  ))
+    }
   return (
     <React.Fragment>
 
@@ -41,6 +77,11 @@ const Filterbuttons = () => {
             }} xs={6} md={3}>
                 <p className={styles.items}>(2 items selected)</p>
                 <p className={styles.exported}  >Export Selected</p>
+
+                <p onClick={ () => downloadfile('pdf')} >Export PDF</p>
+
+                <p onClick={ () =>  downloadfile('excel')} >Export XLS</p>
+
             </Grid>
 
             <Grid sx={{
