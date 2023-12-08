@@ -1,5 +1,4 @@
 import React , {useEffect} from "react";
-import Inviteuser from "./components/Inviteuser";
 import { Box } from '@mui/material'
 import DashboardHeader from './components/Dashboardheader/DashboardHeader'
 import FilterButtons from './components/FilterButtons/Filterbuttons'

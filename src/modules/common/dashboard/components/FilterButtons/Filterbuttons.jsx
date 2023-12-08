@@ -4,6 +4,7 @@ import { Grid , Box } from "@mui/material"
 import { INVITEUSER , SORT } from 'src/assests/index'
 import  styles from './filter.module.scss'
 import { Select ,MenuItem , OutlinedInput } from '@mui/material'
+import Inviteuser from '../Inviteuser'
 
 const Filterbuttons = () => {
     const theme = useTheme()
@@ -76,7 +77,7 @@ const Filterbuttons = () => {
             <Box sx={{
                 cursor : "pointer"
             }}>
-                <img src={INVITEUSER} alt="inviteicon" />
+                <Inviteuser/>
             </Box>
 
             </Grid>

@@ -1,8 +1,8 @@
-import React , {useState} from 'react'
-import { Button }  from "@mui/material"
+import React from 'react'
 import Dialog from 'src/Components/Dialog'
 import InviteForm from './InviteForm'
 import { useSelector , useDispatch } from 'react-redux'
+import { INVITEUSER  } from 'src/assests/index'
 
 
 const Inviteuser = () => {
@@ -24,7 +24,7 @@ const Inviteuser = () => {
     const inviteform = <InviteForm/>
   return (
     <React.Fragment>
-        <Button onClick={openDialog} variant='contained'>Invite User</Button>
+        <img onClick={openDialog} src={INVITEUSER} alt="inviteicon" />
         <Dialog 
         PaperProps = {{
             style : {
