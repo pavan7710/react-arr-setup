@@ -7,11 +7,7 @@ const Navitems = ({open , data}) => {
     const navigate = useNavigate()
     const location = useLocation()
     const {pathname} = location
-
-  
     const heading = pathname.split('/')[1]
-  
-
   return (
      <List sx={{
           display : 'flex',

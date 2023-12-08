@@ -27,7 +27,7 @@ const DataTable = ({rows, columns , sx ,hideFooterPagination, ...rest }) => {
             display : hideFooterPagination ? 'none' : 'flex'
           },
           ".MuiDataGrid-virtualScroller" : {
-              height :  rows?.length > 0 ? '' : '590px'
+              height :  rows?.length > 0 ? '' : ''
           },
 
           ".MuiDataGrid-columnHeaders" : {

@@ -3,14 +3,24 @@ import { Grid , Box , OutlinedInput  , InputAdornment } from '@mui/material'
 import styles from './dashboard.module.scss'
 import SearchIcon from '@mui/icons-material/Search';
 import { FILTERICON } from 'src/assests/index'
-import { useDispatch } from 'react-redux'
-import { list_user } from 'src/actions/Dashboard/actions'
+import { useDispatch , useSelector } from 'react-redux'
 
 const DashboardHeader = () => {
   const dispatch = useDispatch()
+
+  const filterData = useSelector( (state) => state.dashboard )
+
+
+
   const hitApi = (e) => {
     if(e.key === 'Enter' ){
-      dispatch(list_user( '' , 'asc' , e.target.value , '10' , '0' ))
+      dispatch({
+        type : "DASHBOARD_FILTER",
+        payload : {
+          ...filterData.filterValues,
+          search : e.target.value
+        }
+      })
     }
   }
   return (

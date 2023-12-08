@@ -1,22 +1,28 @@
 import React from 'react'
 import DataTable from 'src/Components/Datagrid'
 import { useSelector , useDispatch  } from 'react-redux'
-import { Button, TextField } from '@mui/material'
 import { ANALYTICS_ATIVE } from 'src/assests/index'
-import { list_user } from 'src/actions/Dashboard/actions'
+
 
 const UserList = () => {
 
     const dispatch = useDispatch()
+    const filterData = useSelector( (state) => state.dashboard )
 
     const getId = (id) => {
-      console.log(id)
     }
     const userData = useSelector((state) => state.dashboard )
     const userList = userData?.users?.data
     const CustomNoRowsOverlay = () => {
         return (
-            <p>No Data Found</p>
+           <div style={{
+            display : "flex",
+            justifyContent : "center",
+            alignItems : "center",
+            flexDirection : "column"
+          }} >
+             <p >No Data Found</p>
+           </div>
         )
       }
     const columns = [
@@ -38,29 +44,18 @@ const UserList = () => {
       ];
 
       const handlePageChange = (params) => {
-        dispatch( list_user( '' , '' , '' , '10', params.page * 10 ) )
+        dispatch({
+          type : "DASHBOARD_FILTER",
+          payload : {
+            ...filterData.filterValues,
+            offset :  params.page * 10,
+            limit : '10'
+          }
+        })
       }
 
-      const dummyData = [
-        {
-          id : 110, full_name : "pavan Bollineni" , email : "pavan@gloify.com" , contact : "9700657710" , role : "admin"
-        },
-        {
-          id : 121, full_name : "pavan" , email : "pavan@gloify.com" , contact : "9700657710" , role : "admin"
-        },
-        {
-          id : 142, full_name : "some one" , email : "pavan@gloify.com" , contact : "9700657710" , role : "admin"
-        },
-        {
-          id : 53, full_name : "some one" , email : "pavan@gloify.com" , contact : "9700657710" , role : "admin"
-        },
-        {
-          id : 62, full_name : "some one" , email : "pavan@gloify.com" , contact : "9700657710" , role : "admin"
-        },
-        
-      ]
+     
 
-      const dump = dummyData.map((user, i)=> ({ '#': i + 1, ...user }))
 
       const userWithSno =  userList?.length > 0 && userList.map((user , i) => ({'#' : i + 1 , ...user}))
 
@@ -68,6 +63,14 @@ const UserList = () => {
   return (
     <React.Fragment>
          <DataTable
+         
+        sx={{
+          ".MuiDataGrid-overlayWrapperInner" : {
+            display : "flex",
+            justifyContent : "center"
+          }
+        }}
+
          initialState={{
           pagination: {
             paginationModel: { pageSize: 10, page: 0 },
@@ -80,7 +83,9 @@ const UserList = () => {
         paginationMode="server"
         onPaginationModelChange={handlePageChange}
         rowCount={ userData?.users?.count }
-        autoHeight  rows={rows} columns={columns} disableRowSelectionOnClick />
+        autoHeight  rows={rows} columns={columns} disableRowSelectionOnClick 
+        loading ={filterData.isLoading}
+        />
     </React.Fragment>    
   )
 }

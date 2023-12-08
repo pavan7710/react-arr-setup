@@ -5,13 +5,13 @@ import {  SORT } from 'src/assests/index'
 import  styles from './filter.module.scss'
 import { Select ,MenuItem , OutlinedInput } from '@mui/material'
 import Inviteuser from '../Inviteuser'
-import { useDispatch } from 'react-redux'
-import { download_file , list_user } from 'src/actions/Dashboard/actions'
+import { useDispatch , useSelector } from 'react-redux'
+import { download_file} from 'src/actions/Dashboard/actions'
 
 const Filterbuttons = () => {
     const theme = useTheme()
 
-
+    const filterData = useSelector( (state) => state.dashboard )
 
     const dispatch = useDispatch()
 
@@ -72,8 +72,15 @@ const Filterbuttons = () => {
         }  ))
     }
 
-    const handleChange = (e) => {
-        dispatch( list_user( 'first_name' , e.target.value ,'', '10' , '' ) )
+    const handleChangeSort = (e) => {
+        dispatch({
+            type : "DASHBOARD_FILTER",
+            payload : {
+              ...filterData.filterValues,
+              sort_order : e.target.value,
+              sort_by : "first_name"
+            }
+          })    
     }
   return (
     <React.Fragment>
@@ -82,11 +89,9 @@ const Filterbuttons = () => {
             <Grid sx={{
                 display : "flex",   
             }} xs={6} md={3}>
-                {/* <p className={styles.exported}  >Export Selected</p> */}
-
-                <p onClick={ () => downloadfile('pdf')} >Export PDF</p>
-
-                <p onClick={ () =>  downloadfile('excel')} >Export XLS</p>
+                <p className={styles.exported}  >Export Selected</p>
+                {/* <p onClick={ () => downloadfile('pdf')} >Export PDF</p>
+                <p onClick={ () =>  downloadfile('excel')} >Export XLS</p> */}
 
             </Grid>
 
@@ -111,7 +116,7 @@ const Filterbuttons = () => {
                     defaultValue=''
                     input={<OutlinedInput />}
                     name = "role"
-                    onChange = {(e) => handleChange(e)}
+                    onChange = {(e) => handleChangeSort(e)}
                 >
                     <MenuItem selected value='' disabled  >
                         Sort

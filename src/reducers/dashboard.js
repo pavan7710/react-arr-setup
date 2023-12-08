@@ -3,7 +3,14 @@ import * as types from 'src/actions/Dashboard/types'
 
 const initialState = {
     isLoading : false,
-    users : {}
+    users : {},
+    filterValues : {
+        sort_by : '',
+        sort_order : '',
+        search : '',
+        limit : '10',
+        offset :  ''   
+    }
 }
 
 export const dashboard = (state = initialState , action) => {
@@ -36,6 +43,18 @@ export const dashboard = (state = initialState , action) => {
                 isLoading : false,
                 users : payload
             }
+        case 'DASHBOARD_FILTER' : {
+            return {
+                ...state,
+                filterValues : {
+                    sort_by : payload.sort_by,
+                    sort_order : payload.sort_order,
+                    search : payload.search,
+                    limit : payload.limit,
+                    offset : payload.offset                 
+                }
+            }
+        }
         default:
             return state
     }
