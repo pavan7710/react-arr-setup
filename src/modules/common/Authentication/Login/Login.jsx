@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import Box from "@mui/material/Box";
 import { ReuseOutlinedInput as OutlinedInput } from "src/Components/ReuseOutlinedInput";
 import { passwordValidationSchema , emailValidation } from "src/utlis/RFvalidation";
@@ -29,6 +29,11 @@ export default function SignIn() {
   const dispatch = useDispatch()
   const loginData =  useSelector((state) => state.authReducer)
   const navigate = useNavigate();
+  useEffect(() => {
+    if(loginData.isLogin){
+      navigate('/dashboard')
+    }
+  }, [])
   const handleSubmit = (values, actions, isValid) => {
     dispatch(login_user(values , (res) => {
       if(res.status === 200){

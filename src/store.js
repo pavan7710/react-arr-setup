@@ -7,12 +7,11 @@ const store = configureStore({
 })
 
 store.subscribe(() => {
-    if(store.getState().authReducer.login && store.getState().authReducer.login['access'] ){
-        let token,id , userDetails
-        id = store.getState().authReducer.login.data.id
-        token = store.getState().authReducer.login['access']
-        userDetails = JSON.stringify(store.getState().authReducer.login.data)
-         setAuthToken(token , id , userDetails)
+    if(store.getState().authReducer.login && store.getState().authReducer.login.headers?.['access-token'] ){
+        let token,id 
+        id = store.getState().authReducer.login.headers?.['uid']
+        token = store.getState().authReducer.login.headers?.['access-token']
+         setAuthToken(token , id)
       }
 })
 export default store

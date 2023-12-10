@@ -6,12 +6,12 @@ export const login_user = (data , callback) => async ( dispatch ) => {
     dispatch({
         type : types.LOGIN
     })
-    await api.post('/user/login' , data).then(
+    await api.post('auth/sign_in' , data).then(
         res => {
             callback(res)
             dispatch({
                 type : types.SUCCESS_LOGIN,
-                payload : res.data
+                payload : res
             })
         },
         error => {
@@ -22,6 +22,12 @@ export const login_user = (data , callback) => async ( dispatch ) => {
         }
     )
 }
+
+export const validate_token = () => async (dispatch) => {
+
+}
+
+
 
 export const forgot_password = (data , callback) => async ( dispatch ) => {
     dispatch({
