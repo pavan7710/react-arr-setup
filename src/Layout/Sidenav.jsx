@@ -13,7 +13,7 @@ import Profile from './Profile/Profile'
 import Navitems from './NavItem/Navitems';
 import { useNavData } from './navconfig'
 
-const drawerWidth = 240;
+const drawerWidth = 320;
 const openedMixin = (theme) => ({
   width: drawerWidth,
   transition: theme.transitions.create('width', {

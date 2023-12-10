@@ -8,10 +8,11 @@ const store = configureStore({
 
 store.subscribe(() => {
     if(store.getState().authReducer.login && store.getState().authReducer.login.headers?.['access-token'] ){
-        let token,id 
+        let token,id , role
         id = store.getState().authReducer.login.headers?.['uid']
         token = store.getState().authReducer.login.headers?.['access-token']
-         setAuthToken(token , id)
+        role = store.getState().authReducer.login?.data?.data?.['role'] 
+         setAuthToken(token , id , role)
       }
 })
 export default store
