@@ -7,6 +7,7 @@ import ResetPassword from "../modules/common/Authentication/ResetPassword/ResetP
 import UpdatedSuccessfully from "../modules/common/Authentication/UpdatedSuccessfully/Updated";
 import Success from "../modules/common/Authentication/SuccessScreen/Success"
 import PageNotFound from "src/PageNotFound/PageNotFound";
+import LeadDetails from "src/modules/common/LeadDetails";
 
 
 export const PublicRoutes = [
@@ -34,6 +35,11 @@ export const PrivateRoutes = [
   {
     path: "/dashboard",
     component: <Dashboard/>,
+    roles: ["admin", "sales_manager"],
+  },
+  {
+    path: "/dashboard/:id",
+    component: <LeadDetails/>,
     roles: ["admin", "sales_manager"],
   },
   {

@@ -57,13 +57,12 @@ const AppRoutes = () => {
             return (
               <Route key={route.path} element={<RoleAuth allowedRoles={route.roles}/> }>
                   <Route  path={route.path} element={route.component} />
-                  <Route  path= {route.path} element={route.component} />
               </Route>
             )
           } )}
         </Route>
       </Route>
-      <Route path="*" element={<PageNotFound />} />
+      {/* <Route path="*" element={<PageNotFound />} /> */}
     </Routes>
   );
 };
